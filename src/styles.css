@@ -1,20 +1,20 @@
 
-body {
-  background-color: brown;
-}
 .main-container {
     min-width: 10rem;
     background-color: green;
-    min-height: 30rem;
+    height: 30rem;
   }
   
   .project-section {
-    background-color: azure;
+    background-color: beige;
+    height: 100%;
   }
   
   .sec-container {
+    background-color: aquamarine;
     display: grid;
     grid-template-columns: 1fr 3fr;
+   height: 100%;
   }
   .project-title-rendered {
  border-color: white;
