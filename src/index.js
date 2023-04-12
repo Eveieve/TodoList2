@@ -1,6 +1,6 @@
 import "./styles.css";
 
-import addAndRenderProject from "./project.js";
+import { Model, addAndRenderProject, model, View } from "./project.js";
 
 const addBtn = document.querySelector(".add-btn");
 const projectTitle = document.querySelector(".project-title");

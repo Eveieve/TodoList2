@@ -10,29 +10,36 @@ class Project {
   }
 }
 
-function addProject() {
-  const projectTitle = document.querySelector(".project-title").value;
-  const projectDate = document.querySelector(".project-date").value;
-  const project = new Project(projectTitle, projectDate);
-  projectsArr.push(project);
-  console.log(projectsArr);
+export function Model() {
+  function addProject() {
+    const projectTitle = document.querySelector(".project-title").value;
+    const projectDate = document.querySelector(".project-date").value;
+    const project = new Project(projectTitle, projectDate);
+    projectsArr.push(project);
+    console.log(projectsArr);
+  }
+  function removeProject(ID) {
+    const removedProjectArr = projectsArr.filter((proj) => proj.id !== ID);
+  }
+  return { addProject, removeProject };
 }
 
-function render() {
+export function View() {
   // remove existing rendered projects
+
   while (renderedProjects.firstChild) {
     renderedProjects.firstChild.remove();
   }
-  // recreate projects in the projectsArray
+
   projectsArr.forEach((proj) => {
     const div = document.createElement("input");
     div.classList.add("project-title-rendered");
     div.value = proj.title;
     renderedProjects.appendChild(div);
 
-    const edit = document.createElement("button");
-    edit.textContent = "edit";
-    renderedProjects.appendChild(edit);
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "edit";
+    renderedProjects.appendChild(editBtn);
 
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "delete";
@@ -40,7 +47,9 @@ function render() {
   });
 }
 
-export default function addAndRenderProject() {
-  addProject();
-  render();
+export const model = Model(); // is this even okay
+
+export function addAndRenderProject() {
+  model.addProject();
+  View(); // rerendering updated projectsArr
 }
