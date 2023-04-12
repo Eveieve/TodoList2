@@ -3,28 +3,33 @@ const projectsArr = [];
 const renderedProjects = document.querySelector(".rendered-projects");
 
 class Project {
-  constructor(title, dueDate, id) {
+  constructor(title, dueDate) {
     this.title = title;
     this.dueDate = dueDate;
+    this.doneStatus = false;
     this.id = crypto.randomUUID();
   }
+  toggleDoneStatus() {
+    this.doneStatus = !this.doneStatus;
+  }
 }
 
-export function Model() {
-  function addProject() {
-    const projectTitle = document.querySelector(".project-title").value;
-    const projectDate = document.querySelector(".project-date").value;
-    const project = new Project(projectTitle, projectDate);
-    projectsArr.push(project);
-    console.log(projectsArr);
-  }
-  function removeProject(ID) {
-    const removedProjectArr = projectsArr.filter((proj) => proj.id !== ID);
-  }
-  return { addProject, removeProject };
-}
+function addProject() {
+  const projectTitle = document.querySelector(".project-title").value;
+  const projectDate = document.querySelector(".project-date").value;
 
-export function View() {
+  const project = new Project(projectTitle, projectDate);
+  projectsArr.push(project);
+
+  console.log(project.toggleDoneStatus());
+  console.log(project.doneStatus);
+}
+function toggleDoneStatus() {}
+
+// project.toggleStatus() when user clicks the checkbox.
+//
+
+export function rerenderProjectArr() {
   // remove existing rendered projects
 
   while (renderedProjects.firstChild) {
@@ -44,12 +49,16 @@ export function View() {
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "delete";
     renderedProjects.appendChild(deleteBtn);
+
+    const doneStatus = document.createElement("input");
+    doneStatus.setAttribute("type", "checkbox");
+    renderedProjects.appendChild(doneStatus);
+
+    return { doneStatus };
   });
 }
 
-export const model = Model(); // is this even okay
-
 export function addAndRenderProject() {
-  model.addProject();
-  View(); // rerendering updated projectsArr
+  addProject();
+  rerenderProjectArr(); // rerendering updated projectsArr
 }
