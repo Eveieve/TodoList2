@@ -25,8 +25,9 @@ function render() {
   }
   // recreate projects in the projectsArray
   projectsArr.forEach((proj) => {
-    const div = document.createElement("div");
-    div.textContent = proj.title;
+    const div = document.createElement("input");
+    div.classList.add("project-title-rendered");
+    div.value = proj.title;
     renderedProjects.appendChild(div);
 
     const edit = document.createElement("button");
