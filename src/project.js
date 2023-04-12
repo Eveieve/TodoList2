@@ -9,7 +9,7 @@ class Project {
     this.doneStatus = false;
     this.id = crypto.randomUUID();
   }
-  toggleDoneStatus() {
+  get toggleDoneStatus() {
     this.doneStatus = !this.doneStatus;
     console.log(this.doneStatus);
   }
@@ -25,7 +25,6 @@ function addProject() {
 
 export function rerenderProjectArr() {
   // remove existing rendered projects
-
   while (renderedProjects.firstChild) {
     renderedProjects.firstChild.remove();
   }
@@ -50,9 +49,11 @@ export function rerenderProjectArr() {
     renderedProjects.appendChild(doneStatus);
 
     doneStatus.addEventListener("click", () => {
-      proj.toggleDoneStatus();
+      proj.toggleDoneStatus;
       console.log(proj);
     });
+
+    deleteBtn.addEventListener("click", () => {});
   }
 }
 
