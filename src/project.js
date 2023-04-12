@@ -23,6 +23,14 @@ function addProject() {
   projectsArr.push(project);
 }
 
+function deleteProject(ID) {
+  const deletedProjectArr = projectsArr.filter((proj) => proj.id !== ID);
+  console.log(deletedProjectArr);
+  return deletedProjectArr;
+}
+
+////////////////////////////////////////////////////////////////////////DOM
+
 export function rerenderProjectArr() {
   // remove existing rendered projects
   while (renderedProjects.firstChild) {
@@ -30,6 +38,7 @@ export function rerenderProjectArr() {
   }
   projectsArr.forEach(renderProject);
 
+  // how did i know to put proj as a param?!
   function renderProject(proj) {
     const div = document.createElement("input");
     div.classList.add("project-title-rendered");
@@ -48,12 +57,16 @@ export function rerenderProjectArr() {
     doneStatus.setAttribute("type", "checkbox");
     renderedProjects.appendChild(doneStatus);
 
+    // add listeners to buttons
     doneStatus.addEventListener("click", () => {
       proj.toggleDoneStatus;
       console.log(proj);
     });
 
-    deleteBtn.addEventListener("click", () => {});
+    deleteBtn.addEventListener("click", (ID) => {
+      deleteProject(ID); // what should I pass? as an argument?
+      console.log(deleteProject());
+    });
   }
 }
 
