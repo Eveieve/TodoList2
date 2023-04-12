@@ -3,19 +3,22 @@ const projectsArr = [];
 const renderedProjects = document.querySelector(".rendered-projects");
 
 class Project {
-  constructor(title, dueDate) {
+  constructor(title, dueDate, id) {
     this.title = title;
     this.dueDate = dueDate;
+    this.id = crypto.randomUUID();
   }
 }
 
-export default function addProject() {
+function addProject() {
   const projectTitle = document.querySelector(".project-title").value;
   const projectDate = document.querySelector(".project-date").value;
   const project = new Project(projectTitle, projectDate);
   projectsArr.push(project);
   console.log(projectsArr);
+}
 
+function render() {
   // remove existing rendered projects
   while (renderedProjects.firstChild) {
     renderedProjects.firstChild.remove();
@@ -34,4 +37,9 @@ export default function addProject() {
     deleteBtn.textContent = "delete";
     renderedProjects.appendChild(deleteBtn);
   });
+}
+
+export default function addAndRenderProject() {
+  addProject();
+  render();
 }

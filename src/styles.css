@@ -1,0 +1,15 @@
+.main-container {
+    min-width: 10rem;
+    background-color: green;
+    min-height: 30rem;
+  }
+  
+  .project-section {
+    background-color: azure;
+  }
+  
+  .sec-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+  
