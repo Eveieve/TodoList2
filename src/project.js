@@ -11,6 +11,7 @@ class Project {
   }
   toggleDoneStatus() {
     this.doneStatus = !this.doneStatus;
+    console.log(this.doneStatus);
   }
 }
 
@@ -20,14 +21,7 @@ function addProject() {
 
   const project = new Project(projectTitle, projectDate);
   projectsArr.push(project);
-
-  console.log(project.toggleDoneStatus());
-  console.log(project.doneStatus);
 }
-function toggleDoneStatus() {}
-
-// project.toggleStatus() when user clicks the checkbox.
-//
 
 export function rerenderProjectArr() {
   // remove existing rendered projects
@@ -35,8 +29,9 @@ export function rerenderProjectArr() {
   while (renderedProjects.firstChild) {
     renderedProjects.firstChild.remove();
   }
+  projectsArr.forEach(renderProject);
 
-  projectsArr.forEach((proj) => {
+  function renderProject(proj) {
     const div = document.createElement("input");
     div.classList.add("project-title-rendered");
     div.value = proj.title;
@@ -54,8 +49,11 @@ export function rerenderProjectArr() {
     doneStatus.setAttribute("type", "checkbox");
     renderedProjects.appendChild(doneStatus);
 
-    return { doneStatus };
-  });
+    doneStatus.addEventListener("click", () => {
+      proj.toggleDoneStatus();
+      console.log(proj);
+    });
+  }
 }
 
 export function addAndRenderProject() {
