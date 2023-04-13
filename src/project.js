@@ -2,7 +2,7 @@ const projectsArr = [];
 
 const renderedProjects = document.querySelector(".rendered-projects");
 
-class Project {
+export class Project {
   constructor(title, dueDate) {
     this.title = title;
     this.dueDate = dueDate;
@@ -43,6 +43,7 @@ export function rerenderProjectArr() {
   function renderProject(proj) {
     const div = document.createElement("div");
     div.classList.add("project-title-rendered");
+    div.setAttribute("id", `${proj.id}`);
     div.textContent = proj.title;
     renderedProjects.appendChild(div);
 
