@@ -21,6 +21,7 @@ function addProject() {
 
   const project = new Project(projectTitle, projectDate);
   projectsArr.push(project);
+  return { project };
 }
 
 function deleteProject(ID) {
@@ -38,34 +39,32 @@ export function rerenderProjectArr() {
   }
   projectsArr.forEach(renderProject);
 
-  // how did i know to put proj as a param?!
   function renderProject(proj) {
-    const div = document.createElement("input");
+    const div = document.createElement("div");
     div.classList.add("project-title-rendered");
-    div.value = proj.title;
+    div.textContent = proj.title;
     renderedProjects.appendChild(div);
 
     const editBtn = document.createElement("button");
     editBtn.textContent = "edit";
-    renderedProjects.appendChild(editBtn);
+    div.appendChild(editBtn);
 
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "delete";
-    renderedProjects.appendChild(deleteBtn);
+    div.appendChild(deleteBtn);
 
     const doneStatus = document.createElement("input");
     doneStatus.setAttribute("type", "checkbox");
-    renderedProjects.appendChild(doneStatus);
+    div.appendChild(doneStatus);
 
     // add listeners to buttons
     doneStatus.addEventListener("click", () => {
       proj.toggleDoneStatus;
       console.log(proj);
     });
-
-    deleteBtn.addEventListener("click", (ID) => {
-      deleteProject(ID); // what should I pass? as an argument?
-      console.log(deleteProject());
+    const idToRemove = proj.id;
+    deleteBtn.addEventListener("click", () => {
+      deleteProject(idToRemove); // what should I pass? as an argument?
     });
   }
 }
