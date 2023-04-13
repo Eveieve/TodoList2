@@ -21,13 +21,12 @@ function addProject() {
 
   const project = new Project(projectTitle, projectDate);
   projectsArr.push(project);
-  return { project };
 }
 
 function deleteProject(ID) {
-  const deletedProjectArr = projectsArr.filter((proj) => proj.id !== ID);
-  console.log(deletedProjectArr);
-  return deletedProjectArr;
+  const indexToRemove = projectsArr.find((proj) => proj.id === ID);
+  projectsArr.splice(indexToRemove, 1);
+  rerenderProjectArr(); // recreate! as soon as you delete it!
 }
 
 ////////////////////////////////////////////////////////////////////////DOM
@@ -37,6 +36,7 @@ export function rerenderProjectArr() {
   while (renderedProjects.firstChild) {
     renderedProjects.firstChild.remove();
   }
+
   projectsArr.forEach(renderProject);
 
   function renderProject(proj) {
@@ -64,12 +64,13 @@ export function rerenderProjectArr() {
     });
     const idToRemove = proj.id;
     deleteBtn.addEventListener("click", () => {
-      deleteProject(idToRemove); // what should I pass? as an argument?
+      deleteProject(idToRemove);
+      console.log(projectsArr);
     });
   }
 }
 
 export function addAndRenderProject() {
   addProject();
-  rerenderProjectArr(); // rerendering updated projectsArr
+  rerenderProjectArr();
 }
