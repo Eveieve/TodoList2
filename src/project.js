@@ -24,9 +24,10 @@ function addProject() {
 }
 
 function deleteProject(ID) {
-  const indexToRemove = projectsArr.find((proj) => proj.id === ID);
+  const indexToRemove = projectsArr.findIndex((proj) => proj.id === ID);
+  console.log(indexToRemove);
   projectsArr.splice(indexToRemove, 1);
-  rerenderProjectArr(); // recreate! as soon as you delete it!
+  rerenderProjectArr();
 }
 
 ////////////////////////////////////////////////////////////////////////DOM
@@ -66,6 +67,7 @@ export function rerenderProjectArr() {
     deleteBtn.addEventListener("click", () => {
       deleteProject(idToRemove);
       console.log(projectsArr);
+      rerenderProjectArr();
     });
   }
 }
