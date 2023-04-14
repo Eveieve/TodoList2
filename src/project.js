@@ -1,8 +1,6 @@
 export const projectsArr =
   JSON.parse(localStorage.getItem("storageProjectsArr")) ?? [];
 
-localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
-
 export class Project {
   constructor(title, dueDate) {
     this.title = title;
@@ -20,6 +18,8 @@ export function addProject() {
   const projectDate = document.querySelector(".project-date").value;
   const project = new Project(projectTitle, projectDate);
   projectsArr.push(project);
+
+  localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }
 
 export function deleteProject(ID) {
