@@ -8,17 +8,17 @@ export class Project {
     this.doneStatus = false;
     this.id = crypto.randomUUID();
   }
-  get toggleDoneStatus() {
+  toggleDoneStatus() {
     this.doneStatus = !this.doneStatus;
   }
 }
-
 export function addProject() {
   const projectTitle = document.querySelector(".project-title").value;
   const projectDate = document.querySelector(".project-date").value;
   const project = new Project(projectTitle, projectDate);
-  projectsArr.push(project);
 
+  projectsArr.push(project);
+  console.log(project);
   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }
 
