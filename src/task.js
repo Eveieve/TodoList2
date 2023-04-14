@@ -1,15 +1,16 @@
-function taskFactory(title, dueDate) {
-  const doneStatus = false;
-  const id = crypto.randomUUID();
-  return { title, dueDate, id, doneStatus };
-}
+import { Project as Task } from "./project.js";
 
-console.log(taskFactory);
+const taskArr = [];
 
-function addTask(title, dueDate) {
-  const task = taskFactory();
+function addTask() {
+  // take in values from input, name them title and dueDate
+  const taskTitle = taskInput.value; // it doesn't know what taskInput is tho?
+
+  const task = new Task(taskTitle);
   console.log(task);
+  taskArr.push(task);
 }
+
 // when the project-title-rendered UI is clicked, (which is the default)
 // user can add tasks to that project.
 export function taskUI() {
@@ -22,10 +23,12 @@ export function taskUI() {
   const renderedTasks = document.createElement("div");
   taskSection.appendChild(renderedTasks);
 
-  const input = document.createElement("input");
-  renderedTasks.appendChild(input);
+  const taskInput = document.createElement("input");
+  renderedTasks.appendChild(taskInput);
 
   const addBtn = document.createElement("button");
   addBtn.textContent = "add";
   taskSection.appendChild(addBtn);
+
+  addBtn("click", addTask);
 }

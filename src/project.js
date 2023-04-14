@@ -43,6 +43,9 @@ export function rerenderProjectArr() {
   function renderProject(proj) {
     const div = document.createElement("div");
     div.classList.add("project-title-rendered");
+
+    div.addEventListener("click", styleClickedProject);
+
     div.setAttribute("id", `${proj.id}`);
     div.textContent = proj.title;
     renderedProjects.appendChild(div);
@@ -64,12 +67,19 @@ export function rerenderProjectArr() {
       proj.toggleDoneStatus;
       console.log(proj);
     });
+
+    renderedProjects.firstElementChild.className = "clicked-first-project";
+
     const idToRemove = proj.id;
     deleteBtn.addEventListener("click", () => {
       deleteProject(idToRemove);
       console.log(projectsArr);
       rerenderProjectArr();
     });
+    // style rendered project that is clicked
+    function styleClickedProject() {
+      div.className = "clicked-project";
+    }
   }
 }
 

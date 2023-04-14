@@ -22,3 +22,10 @@
   .project-title-rendered {
  background-color: bisque;
   }
+
+.clicked-first-project,
+.clicked-project {
+    background-color: burlywood;
+  }
+
+  
