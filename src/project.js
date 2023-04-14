@@ -17,6 +17,10 @@ export function addProject() {
   const projectDate = document.querySelector(".project-date").value;
   const project = new Project(projectTitle, projectDate);
   projectsArr.push(project);
+  const storageProjectArr = localStorage.setItem(
+    "storageProjectsArr",
+    JSON.stringify(projectsArr)
+  );
 }
 
 export function deleteProject(ID) {

@@ -1,4 +1,5 @@
 import { projectsArr, deleteProject } from "./project";
+
 const renderedProjects = document.querySelector(".rendered-projects");
 
 function renderProject(proj) {
@@ -45,5 +46,11 @@ export function rerenderProjectArr() {
   while (renderedProjects.firstChild) {
     renderedProjects.firstChild.remove();
   }
-  projectsArr.forEach(renderProject);
+  if (localStorage.getItem("storageProjectArr")) {
+    JSON.parse(localStorage.getItem("storageProjectArr")).forEach(
+      renderProject
+    );
+  } else {
+    projectsArr.forEach(renderProject);
+  }
 }
