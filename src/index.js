@@ -7,7 +7,10 @@ import { taskUI } from "./task.js";
 const addBtn = document.querySelector(".add-btn");
 const projectTitle = document.querySelector(".project-title");
 
+rerenderProjectArr();
+
 addBtn.addEventListener("click", () => {
+  rerenderProjectArr();
   addProject();
   rerenderProjectArr();
   projectTitle.value = "";

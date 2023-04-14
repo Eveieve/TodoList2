@@ -46,11 +46,6 @@ export function rerenderProjectArr() {
   while (renderedProjects.firstChild) {
     renderedProjects.firstChild.remove();
   }
-  if (localStorage.getItem("storageProjectArr")) {
-    JSON.parse(localStorage.getItem("storageProjectArr")).forEach(
-      renderProject
-    );
-  } else {
-    projectsArr.forEach(renderProject);
-  }
+  console.log(projectsArr);
+  projectsArr.forEach(renderProject);
 }
