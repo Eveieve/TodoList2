@@ -1,12 +1,15 @@
 import "./styles.css";
 
-import { addAndRenderProject } from "./project.js";
+import { addProject, deleteProject } from "./project.js";
+import { rerenderProjectArr } from "./projectDOM";
 import { taskUI } from "./task.js";
+
 const addBtn = document.querySelector(".add-btn");
 const projectTitle = document.querySelector(".project-title");
 
 addBtn.addEventListener("click", () => {
-  addAndRenderProject(); //updating
+  addProject();
+  rerenderProjectArr();
   projectTitle.value = "";
 });
 
