@@ -25,4 +25,5 @@ export function addProject() {
 export function deleteProject(ID) {
   const indexToRemove = projectsArr.findIndex((proj) => proj.id === ID);
   projectsArr.splice(indexToRemove, 1);
+  localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }
