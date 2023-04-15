@@ -1,5 +1,5 @@
 import { projectsArr, deleteProject } from "./project";
-
+import { taskUI } from "./taskDOM";
 const renderedProjects = document.querySelector(".rendered-projects");
 
 function renderProject(proj) {
@@ -11,6 +11,9 @@ function renderProject(proj) {
   div.setAttribute("id", `${proj.id}`);
   div.textContent = proj.title;
   renderedProjects.appendChild(div);
+  div.addEventListener("click", () => {
+    taskUI();
+  });
 
   const editBtn = document.createElement("button");
   editBtn.textContent = "edit";
@@ -22,13 +25,14 @@ function renderProject(proj) {
 
   const doneStatus = document.createElement("input");
   doneStatus.setAttribute("type", "checkbox");
+  console.log(proj.doneStatus);
   div.appendChild(doneStatus);
 
   doneStatus.addEventListener("click", () => {
-    proj.toggleDoneStatus();
-    console.log(typeof proj.doneStatus);
-    localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
     console.log(proj);
+    proj.toggleDoneStatus();
+
+    localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
   });
 
   renderedProjects.firstElementChild.className = "clicked-first-project";

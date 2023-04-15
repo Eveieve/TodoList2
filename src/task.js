@@ -1,12 +1,15 @@
-import { Project as Task } from "./project.js";
+import { Project, projectsArr } from "./project.js";
 
-const taskArr = [];
+class Task extends Project {
+  constructor() {
+    super(title, dueDate, doneStatus, id);
+  }
+}
 
-function addTask() {
-  // take in values from input, name them title and dueDate
-  const taskTitle = taskInput.value; // it doesn't know what taskInput is tho?
+// object assign to return the project with tasks in it?
 
-  const task = new Task(taskTitle);
+function addTaskToProject() {
+  const task = new Task(taskTitle, taskDueDate);
   console.log(task);
-  taskArr.push(task);
+  projectsArr.push(task); // not sure, won't go inside a big project.
 }
