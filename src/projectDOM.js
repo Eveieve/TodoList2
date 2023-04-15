@@ -26,7 +26,8 @@ function renderProject(proj) {
 
   doneStatus.addEventListener("click", () => {
     proj.toggleDoneStatus();
-    localStorage.setItem("storageProjectsArr", `${proj.doneStatus}`);
+    console.log(typeof proj.doneStatus);
+    localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
     console.log(proj);
   });
 
