@@ -1,15 +1,16 @@
 import { Project, projectsArr } from "./project.js";
 
 class Task extends Project {
-  constructor() {
+  constructor(title, dueDate) {
     super(title, dueDate, doneStatus, id);
   }
 }
 
-// object assign to return the project with tasks in it?
-
-function addTaskToProject() {
+export function addTaskToProject() {
+  // console.log(document.querySelector(".task-title-input"));
+  const taskTitle = document.querySelector(".task-title-input").value;
+  const taskDueDate = document.querySelector(".task-duedate-input").value;
   const task = new Task(taskTitle, taskDueDate);
   console.log(task);
-  projectsArr.push(task); // not sure, won't go inside a big project.
+  projectsArr.push(task);
 }

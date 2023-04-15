@@ -1,5 +1,7 @@
 // when the project-title-rendered UI is clicked, (which is the default)
 // user can add tasks to that project.
+import { addTaskToProject } from "./task";
+
 export function taskUI() {
   const taskSection = document.querySelector(".task-section");
 
@@ -7,15 +9,25 @@ export function taskUI() {
   p.textContent = "Tasks";
   taskSection.appendChild(p);
 
+  const form = document.createElement("form");
+  taskSection.appendChild(form);
+
   const renderedTasks = document.createElement("div");
-  taskSection.appendChild(renderedTasks);
+  form.appendChild(renderedTasks);
 
   const taskInput = document.createElement("input");
-  renderedTasks.appendChild(taskInput);
+  taskInput.classList.add("task-title-input");
+  form.appendChild(taskInput);
 
+  const taskDuedate = document.createElement("input");
+  taskDuedate.setAttribute("type", "date");
+  form.appendChild(taskDuedate);
   const addBtn = document.createElement("button");
   addBtn.textContent = "add";
-  taskSection.appendChild(addBtn);
+  form.appendChild(addBtn);
 
-  addBtn("click", addTask);
+  addBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    addTaskToProject();
+  });
 }
