@@ -4,6 +4,7 @@ export class Project {
     this.dueDate = dueDate;
     this.doneStatus = false;
     this.id = crypto.randomUUID();
+    this.task = []; // create space for little tasks 
   }
   toggleDoneStatus() {
     this.doneStatus = !this.doneStatus;

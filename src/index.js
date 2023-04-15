@@ -13,5 +13,3 @@ addBtn.addEventListener("click", () => {
   rerenderProjectArr();
   projectTitle.value = "";
 });
-
-taskUI();

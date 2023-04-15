@@ -21,6 +21,8 @@ export function taskUI() {
 
   const taskDuedate = document.createElement("input");
   taskDuedate.setAttribute("type", "date");
+  taskInput.classList.add("task-duedate-input");
+
   form.appendChild(taskDuedate);
   const addBtn = document.createElement("button");
   addBtn.textContent = "add";
