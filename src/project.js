@@ -1,6 +1,3 @@
-export const projectsArr =
-  JSON.parse(localStorage.getItem("storageProjectsArr")) ?? [];
-
 export class Project {
   constructor(title, dueDate) {
     this.title = title;
@@ -12,6 +9,11 @@ export class Project {
     this.doneStatus = !this.doneStatus;
   }
 }
+export const projectsArr =
+  JSON.parse(localStorage.getItem("storageProjectsArr")).map(
+    (obj) => Object.assign(new Project(), obj) // return new Project() with obj's properties!!
+  ) ?? [];
+
 export function addProject() {
   const projectTitle = document.querySelector(".project-title").value;
   const projectDate = document.querySelector(".project-date").value;
