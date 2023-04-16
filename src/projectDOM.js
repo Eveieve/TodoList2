@@ -1,5 +1,9 @@
 import { projectsArr, deleteProject } from "./project";
-import { removeTaskSection } from "./little-taskDOM";
+import {
+  removeTaskSectionAndRenderInputField,
+  renderInputField,
+  renderLittleTaskOfProject,
+} from "./little-taskDOM";
 const renderedProjects = document.querySelector(".rendered-projects");
 
 export function renderProject(proj) {
@@ -9,8 +13,10 @@ export function renderProject(proj) {
   div.setAttribute("id", `${proj.id}`);
   div.textContent = proj.title;
   renderedProjects.appendChild(div);
+
   div.addEventListener("click", () => {
-    removeTaskSection();
+    removeTaskSectionAndRenderInputField();
+    renderLittleTaskOfProject(proj);
   });
   const editBtn = document.createElement("button");
   editBtn.textContent = "edit";
@@ -29,6 +35,7 @@ export function renderProject(proj) {
     localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
   });
 
+  // style the first projects differently
   renderedProjects.firstElementChild.className = "clicked-first-project";
 
   const idToRemove = proj.id;
