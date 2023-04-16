@@ -18,7 +18,7 @@ export const taskArr =
 export function addTask() {
   const taskTitle = document.querySelector(".task-title").value;
   const taskDate = document.querySelector(".task-date").value;
-  const task = new task(taskTitle, taskDate);
+  const task = new Task(taskTitle, taskDate);
 
   taskArr.push(task);
   console.log(taskArr);

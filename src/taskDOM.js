@@ -2,6 +2,7 @@ import { taskArr, deleteTask } from "./task";
 
 const renderedTasks = document.querySelector(".rendered-tasks");
 console.log(renderedTasks);
+
 export function renderTask(task) {
   const div = document.createElement("div");
   div.classList.add("task-rendered");
