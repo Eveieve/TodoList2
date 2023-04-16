@@ -1,5 +1,5 @@
 import "./styles.css";
-import { rerenderTaskArr } from "./taskDOM";
+import { rerenderTaskArr } from "./all-taskDOM";
 import { addProject } from "./project.js";
 import { rerenderProjectArr } from "./projectDOM";
 import { addTask } from "./all-task";
@@ -18,7 +18,9 @@ addBtn.addEventListener("click", () => {
 const taskAddBtn = document.querySelector(".task-add-btn");
 const taskTitle = document.querySelector(".task-title");
 
+rerenderTaskArr();
 taskAddBtn.addEventListener("click", () => {
   addTask();
   rerenderTaskArr();
+  taskTitle.value = "";
 });
