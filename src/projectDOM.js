@@ -1,5 +1,6 @@
 import { projectsArr, deleteProject } from "./project";
 import { taskUI } from "./taskDOM";
+
 const renderedProjects = document.querySelector(".rendered-projects");
 
 function renderProject(proj) {
@@ -11,9 +12,6 @@ function renderProject(proj) {
   div.setAttribute("id", `${proj.id}`);
   div.textContent = proj.title;
   renderedProjects.appendChild(div);
-  div.addEventListener("click", () => {
-    taskUI();
-  });
 
   const editBtn = document.createElement("button");
   editBtn.textContent = "edit";
@@ -38,6 +36,7 @@ function renderProject(proj) {
   renderedProjects.firstElementChild.className = "clicked-first-project";
 
   const idToRemove = proj.id;
+
   deleteBtn.addEventListener("click", () => {
     deleteProject(idToRemove);
     rerenderProjectArr();

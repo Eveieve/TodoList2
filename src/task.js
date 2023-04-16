@@ -2,15 +2,17 @@ import { Project as Task, projectsArr } from "./project.js";
 
 export const taskArray = [];
 
-export function addTaskToProject(ID) {
+export function addTaskToTaskArr() {
   const taskTitle = document.querySelector(".task-title-input").value;
   const taskDueDate = document.querySelector(".task-duedate-input").value;
   const task = new Task(taskTitle, taskDueDate);
-  console.log(task);
-  console.log(projectsArr);
   taskArray.push(task);
 
-  console.log(projectsArr[ID]);
-  projectsArr[ID].task = taskArray;
+  return taskArray;
+}
+export function insertTaskToProject(ID) {
+  const index = projectsArr.findIndex((proj) => proj.id == ID);
+  console.log(index);
+  projectsArr[0].task = taskArray; // undefined, index is undefined
   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }

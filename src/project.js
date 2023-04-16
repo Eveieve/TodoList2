@@ -1,4 +1,4 @@
-import { taskArray } from "./task";
+import { taskArray, addTask } from "./task";
 
 export class Project {
   constructor(title, dueDate) {
@@ -34,11 +34,7 @@ export function deleteProject(ID) {
   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }
 
-// function to take in task
-// maybe import taskArray from task.js,
-// replace task property of each project with the taskArray?
-
-function findProjectToInsertTask(ID) {
-  const projectToInsertTask = projectsArr.find((proj) => proj.id === ID);
-  return projectToInsertTask;
-}
+// export function findProjectToInsertTask(ID) {
+//   const index = projectsArr.findIndex((proj) => proj.id === ID);
+//   return index
+// }
