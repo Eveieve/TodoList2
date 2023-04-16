@@ -12,7 +12,7 @@ export class Project {
 }
 
 export const projectsArr =
-  JSON.parse(localStorage.getItem("storageProjectsArr")).map((obj) =>
+  JSON.parse(localStorage.getItem("storageProjectsArr"))?.map((obj) =>
     Object.assign(new Project(), obj)
   ) ?? [];
 

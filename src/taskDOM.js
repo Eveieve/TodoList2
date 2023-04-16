@@ -1,35 +1,56 @@
-// when the project-title-rendered UI is clicked, (which is the default)
-// user can add tasks to that project.
-import { addTaskToProject } from "./task";
+import { addTaskToProject, taskArray } from "./task";
 
-export function taskUI() {
-  const taskSection = document.querySelector(".task-section");
+const taskSection = document.querySelector(".task-section");
+const form = document.createElement("form");
+const renderedTasks = document.createElement("div");
+taskSection.appendChild(renderedTasks);
+renderedTasks.appendChild(form);
 
+export function taskUI(task) {
   const p = document.createElement("p");
   p.textContent = "Tasks";
   taskSection.appendChild(p);
 
-  const form = document.createElement("form");
-  taskSection.appendChild(form);
-
-  const renderedTasks = document.createElement("div");
-  form.appendChild(renderedTasks);
-
   const taskInput = document.createElement("input");
   taskInput.classList.add("task-title-input");
-  form.appendChild(taskInput);
+  taskSection.appendChild(taskInput);
 
   const taskDuedate = document.createElement("input");
   taskDuedate.setAttribute("type", "date");
   taskInput.classList.add("task-duedate-input");
 
-  form.appendChild(taskDuedate);
+  taskSection.appendChild(taskDuedate);
+
   const addBtn = document.createElement("button");
   addBtn.textContent = "add";
-  form.appendChild(addBtn);
+  taskSection.appendChild(addBtn);
 
   addBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    addTaskToProject();
+    // pass in the ID..
+    addTaskToProject(0);
+    rerenderTask();
   });
+}
+
+function renderTask(task) {
+  const div = document.createElement("div");
+  div.classList.add("rendered-task");
+  div.textContent = `${task.title}`;
+  taskSection.appendChild(div);
+
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "edit";
+  div.appendChild(editBtn);
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "delete";
+  div.appendChild(deleteBtn);
+}
+
+function rerenderTask() {
+  while (renderedTasks.firstChild) {
+    renderedTasks.firstChild.remove();
+  }
+  taskArray.forEach(renderTask);
 }
