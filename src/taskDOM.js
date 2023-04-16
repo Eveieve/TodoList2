@@ -15,10 +15,22 @@ renderedTasks.appendChild(form);
 
 const input = document.createElement("input");
 form.appendChild(input);
+input.classList.add("task-title-input");
+
+const dueDate = document.createElement("input");
+dueDate.setAttribute("type", "date");
+dueDate.classList.add("task-duedate-input");
+form.appendChild(dueDate);
 
 const addBtn = document.createElement("button");
 addBtn.textContent = "add";
 form.appendChild(addBtn);
+
+addBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  // add the task to the project,
+  // render the task
+});
 
 function renderTask(task) {
   const div = document.createElement("div");
