@@ -1,5 +1,5 @@
 import { projectsArr, deleteProject } from "./project";
-
+import { removeTaskSection } from "./little-taskDOM";
 const renderedProjects = document.querySelector(".rendered-projects");
 
 export function renderProject(proj) {
@@ -9,7 +9,9 @@ export function renderProject(proj) {
   div.setAttribute("id", `${proj.id}`);
   div.textContent = proj.title;
   renderedProjects.appendChild(div);
-
+  div.addEventListener("click", () => {
+    removeTaskSection();
+  });
   const editBtn = document.createElement("button");
   editBtn.textContent = "edit";
   div.appendChild(editBtn);
