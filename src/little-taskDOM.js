@@ -1,9 +1,11 @@
+import { addLittleTaskToProject } from "./little-task";
+import { projectsArr } from "./project";
 // wipe out task section when user clicks the project
 const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
 
 // create input field when project is clicked
-export function renderInputField() {
+function renderInputField(projectForRenderingLittleTask) {
   taskSection.appendChild(renderedTasks);
 
   const form = document.createElement("form");
@@ -14,13 +16,25 @@ export function renderInputField() {
   form.appendChild(inputTitle);
 
   const inputDate = document.createElement("input");
+  inputDate.setAttribute("type", "date");
   inputDate.classList.add("task-date");
   form.appendChild(inputDate);
 
-  const taskBtn = document.createElement("button");
-  taskBtn.classList.add("task-button");
-  taskBtn.textContent = "add";
-  form.appendChild(taskBtn);
+  const addBtn = document.createElement("button");
+  addBtn.classList.add("task-button");
+  addBtn.textContent = "add";
+  form.appendChild(addBtn);
+
+  const foundProject = projectsArr.find(
+    (project) => project.id === projectForRenderingLittleTask
+  );
+
+  addBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    // pass a specific project..
+    addLittleTaskToProject(foundProject);
+    renderLittleTaskOfProject();
+  });
 }
 
 export function removeTaskSectionAndRenderInputField() {
