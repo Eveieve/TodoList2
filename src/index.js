@@ -2,7 +2,7 @@ import "./styles.css";
 import { rerenderTaskArr } from "./taskDOM";
 import { addProject } from "./project.js";
 import { rerenderProjectArr } from "./projectDOM";
-import { addTask } from "./task";
+import { addTask } from "./all-task";
 // import { rerenderTaskArr } from "./taskDOM";
 
 const addBtn = document.querySelector(".add-btn");

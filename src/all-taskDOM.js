@@ -1,4 +1,4 @@
-import { taskArr, deleteTask } from "./task";
+import { taskArr, deleteTask } from "./all-task";
 
 const renderedTasks = document.querySelector(".rendered-tasks");
 console.log(renderedTasks);
