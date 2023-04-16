@@ -23,13 +23,10 @@ function renderProject(proj) {
 
   const doneStatus = document.createElement("input");
   doneStatus.setAttribute("type", "checkbox");
-  console.log(proj.doneStatus);
   div.appendChild(doneStatus);
 
   doneStatus.addEventListener("click", () => {
-    console.log(proj);
     proj.toggleDoneStatus();
-
     localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
   });
 
