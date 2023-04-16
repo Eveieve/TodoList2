@@ -4,15 +4,16 @@ export class Project {
     this.dueDate = dueDate;
     this.doneStatus = false;
     this.id = crypto.randomUUID();
-    this.task = []; // create space for little tasks 
+    this.task = []; // create space for little tasks
   }
   toggleDoneStatus() {
     this.doneStatus = !this.doneStatus;
   }
 }
+
 export const projectsArr =
-  JSON.parse(localStorage.getItem("storageProjectsArr")).map(
-    (obj) => Object.assign(new Project(), obj) // return new Project() with obj's properties!!
+  JSON.parse(localStorage.getItem("storageProjectsArr")).map((obj) =>
+    Object.assign(new Project(), obj)
   ) ?? [];
 
 export function addProject() {
