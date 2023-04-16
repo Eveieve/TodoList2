@@ -1,7 +1,9 @@
 import "./styles.css";
-import { taskUI } from "./taskDOM";
+import { rerenderTaskArr } from "./taskDOM";
 import { addProject } from "./project.js";
 import { rerenderProjectArr } from "./projectDOM";
+import { addTask } from "./task";
+import { rerenderTaskArr } from "./taskDOM";
 
 const addBtn = document.querySelector(".add-btn");
 const projectTitle = document.querySelector(".project-title");
@@ -11,4 +13,11 @@ addBtn.addEventListener("click", () => {
   addProject();
   rerenderProjectArr();
   projectTitle.value = "";
+});
+
+const taskAddBtn = document.querySelector(".task-add-btn");
+
+taskAddBtn.addEventListener("click", () => {
+  addTask();
+  rerenderTaskArr();
 });

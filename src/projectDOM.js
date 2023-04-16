@@ -1,13 +1,10 @@
 import { projectsArr, deleteProject } from "./project";
-import { taskUI } from "./taskDOM";
 
 const renderedProjects = document.querySelector(".rendered-projects");
 
-function renderProject(proj) {
+export function renderProject(proj) {
   const div = document.createElement("div");
   div.classList.add("project-title-rendered");
-
-  div.addEventListener("click", styleClickedProject);
 
   div.setAttribute("id", `${proj.id}`);
   div.textContent = proj.title;
@@ -38,10 +35,6 @@ function renderProject(proj) {
     deleteProject(idToRemove);
     rerenderProjectArr();
   });
-  // style rendered project that is clicked
-  function styleClickedProject() {
-    div.className = "clicked-project";
-  }
 }
 
 export function rerenderProjectArr() {

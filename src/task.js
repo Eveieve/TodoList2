@@ -1,27 +1,32 @@
-import { Project as Task, projectsArr } from "./project.js";
+export class Task {
+  constructor(title, dueDate) {
+    this.title = title;
+    this.dueDate = dueDate;
+    this.doneStatus = false;
+    this.id = crypto.randomUUID();
+  }
+  toggleDoneStatus() {
+    this.doneStatus = !this.doneStatus;
+  }
+}
 
-// export const taskArray = [];
+export const taskArr =
+  JSON.parse(localStorage.getItem("storageTaskArr"))?.map((obj) =>
+    Object.assign(new Task(), obj)
+  ) ?? [];
 
-// export function addTaskToTaskArr() {
-//   const taskTitle = document.querySelector(".task-title-input").value;
-//   const taskDueDate = document.querySelector(".task-duedate-input").value;
-//   const task = new Task(taskTitle, taskDueDate);
-//   taskArray.push(task);
+export function addTask() {
+  const taskTitle = document.querySelector(".task-title").value;
+  const taskDate = document.querySelector(".task-date").value;
+  const task = new task(taskTitle, taskDate);
 
-//   return taskArray;
-// }
-// export function insertTaskToProject(ID) {
-//   const index = projectsArr.findIndex((proj) => proj.id == ID);
-//   console.log(index);
-//   projectsArr[0].task = taskArray; // undefined, index is undefined
-//   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
-// }
+  taskArr.push(task);
+  console.log(taskArr);
+  localStorage.setItem("storageTaskArr", JSON.stringify(taskArr));
+}
 
-function addTaskToArray() {
-  // how should i make it know that this task array belongs to this one project that user clicked?!
-  const taskTitle = document.querySelector(".task-title-input").value;
-  const taskDueDate = document.querySelector(".task-duedate-input").value;
-
-  const taskArray = [];
-  const task = new Task(taskTitle, taskDueDate);
+export function deleteTask(ID) {
+  const indexToRemove = taskArr.findIndex((task) => task.id === ID);
+  taskArr.splice(indexToRemove, 1);
+  localStorage.setItem("storageTaskArr", JSON.stringify(taskArr));
 }

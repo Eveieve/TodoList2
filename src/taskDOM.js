@@ -1,58 +1,44 @@
-// import {
-//   addTaskToProject,
-//   taskArray,
-//   insertTaskToProject,
-//   addTaskToTaskArr,
-// } from "./task";
+import { taskArr, deleteTask } from "./task";
 
-// const taskSection = document.querySelector(".task-section");
-// const form = document.createElement("form");
-// const renderedTasks = document.createElement("div");
-// taskSection.appendChild(renderedTasks);
-// renderedTasks.appendChild(form);
+const renderedTasks = document.querySelector(".rendered-tasks");
+console.log(renderedTasks);
+export function renderTask(task) {
+  const div = document.createElement("div");
+  div.classList.add("task-rendered");
 
-// // task input field
+  div.setAttribute("id", `${task.id}`);
+  div.textContent = task.title;
+  renderedTasks.appendChild(div);
 
-// const input = document.createElement("input");
-// form.appendChild(input);
-// input.classList.add("task-title-input");
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "edit";
+  div.appendChild(editBtn);
 
-// const dueDate = document.createElement("input");
-// dueDate.setAttribute("type", "date");
-// dueDate.classList.add("task-duedate-input");
-// form.appendChild(dueDate);
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "delete";
+  div.appendChild(deleteBtn);
 
-// const addBtn = document.createElement("button");
-// addBtn.textContent = "add";
-// form.appendChild(addBtn);
+  const doneStatus = document.createElement("input");
+  doneStatus.setAttribute("type", "checkbox");
+  div.appendChild(doneStatus);
 
-// addBtn.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   // add the task to the project,
-//   // render the task
-//   addTaskToTaskArr();
-//   insertTaskToProject();
-//   rerenderTask();
-// });
+  doneStatus.addEventListener("click", () => {
+    task.toggleDoneStatus();
+    localStorage.setItem("storageTaskArr", JSON.stringify(taskArr));
+  });
 
-// function renderTask(task) {
-//   const div = document.createElement("div");
-//   div.classList.add("rendered-task");
-//   div.textContent = `${task.title}`;
-//   renderedTasks.appendChild(div);
+  const idToRemove = task.id;
 
-//   const editBtn = document.createElement("button");
-//   editBtn.textContent = "edit";
-//   div.appendChild(editBtn);
+  deleteBtn.addEventListener("click", () => {
+    deleteTask(idToRemove);
+    rerenderTaskArr();
+  });
+}
 
-//   const deleteBtn = document.createElement("button");
-//   deleteBtn.textContent = "delete";
-//   div.appendChild(deleteBtn);
-// }
+export function rerenderTaskArr() {
+  while (renderedTasks.firstChild) {
+    renderedTasks.firstChild.remove();
+  }
 
-// function rerenderTask() {
-//   while (renderedTasks.firstChild) {
-//     renderedTasks.firstChild.remove();
-//   }
-//   taskArray.forEach(renderTask);
-// }
+  taskArr.forEach(renderTask);
+}

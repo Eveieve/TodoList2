@@ -1,5 +1,3 @@
-import { taskArray, addTask } from "./task";
-
 export class Project {
   constructor(title, dueDate) {
     this.title = title;
@@ -33,8 +31,3 @@ export function deleteProject(ID) {
   projectsArr.splice(indexToRemove, 1);
   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }
-
-// export function findProjectToInsertTask(ID) {
-//   const index = projectsArr.findIndex((proj) => proj.id === ID);
-//   return index
-// }
