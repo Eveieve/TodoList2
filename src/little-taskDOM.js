@@ -1,5 +1,5 @@
 import { addLittleTaskToProject } from "./little-task";
-
+import { projectsArr } from "./project";
 const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
 
@@ -57,6 +57,7 @@ export function renderLittleTask(project) {
     div.appendChild(deleteBtn);
 
     const idToRemove = task.id;
+
     deleteBtn.addEventListener("click", () => {
       deleteLittleTask(idToRemove);
       while (renderedTasks.firstChild) {
@@ -73,7 +74,7 @@ export function renderLittleTask(project) {
   function deleteLittleTask(task) {
     const indexToRemove = project.task.findIndex((el) => el.id === task);
     project.task.splice(indexToRemove, 1);
-    console.log(indexToRemove);
+    localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
   }
 
   while (renderedTasks.firstChild) {
