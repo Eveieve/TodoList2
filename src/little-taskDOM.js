@@ -41,10 +41,6 @@ export function removeTaskSectionAndRenderInputField(project) {
 
 // pull out project.task array from each project
 export function renderLittleTaskOfProject(project) {
-  const projectTitle = document.createElement("h2");
-  projectTitle.textContent = project.title;
-  taskSection.appendChild(projectTitle);
-
   const render = (task) => {
     const div = document.createElement("div");
     div.classList.add("task-rendered");
@@ -65,8 +61,13 @@ export function renderLittleTaskOfProject(project) {
     doneStatus.setAttribute("type", "checkbox");
     div.appendChild(doneStatus);
   };
+
   while (renderedTasks.firstChild) {
     renderedTasks.firstChild.remove();
   }
   project.task.forEach(render);
+
+  const projectTitle = document.createElement("h2");
+  projectTitle.textContent = project.title;
+  renderedTasks.appendChild(projectTitle);
 }
