@@ -1,11 +1,10 @@
 import { addLittleTaskToProject } from "./little-task";
-import { projectsArr } from "./project";
-// wipe out task section when user clicks the project
+
 const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
 
-// create input field when project is clicked
-function renderInputField(projectForRenderingLittleTask) {
+// create input field when that project is clicked
+function renderInputField() {
   taskSection.appendChild(renderedTasks);
 
   const form = document.createElement("form");
@@ -25,14 +24,10 @@ function renderInputField(projectForRenderingLittleTask) {
   addBtn.textContent = "add";
   form.appendChild(addBtn);
 
-  const foundProject = projectsArr.find(
-    (project) => project.id === projectForRenderingLittleTask
-  );
-
   addBtn.addEventListener("click", (e) => {
     e.preventDefault();
     // pass a specific project..
-    addLittleTaskToProject(foundProject);
+    addLittleTaskToProject();
     renderLittleTaskOfProject();
   });
 }
@@ -47,6 +42,10 @@ export function removeTaskSectionAndRenderInputField() {
 // pull out project.task array from each project
 export function renderLittleTaskOfProject(project) {
   const render = (task) => {
+    const projectTitle = document.createElement("h2");
+    projectTitle.textContent = project.title;
+    taskSection.appendChild(projectTitle);
+
     const div = document.createElement("div");
     div.classList.add("task-rendered");
 
@@ -66,6 +65,8 @@ export function renderLittleTaskOfProject(project) {
     doneStatus.setAttribute("type", "checkbox");
     div.appendChild(doneStatus);
   };
-
+  while (renderedTasks.firstChild) {
+    renderedTasks.firstChild.remove();
+  }
   project.task.forEach(render);
 }

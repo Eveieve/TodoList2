@@ -1,7 +1,6 @@
 import { projectsArr, deleteProject } from "./project";
 import {
   removeTaskSectionAndRenderInputField,
-  renderInputField,
   renderLittleTaskOfProject,
 } from "./little-taskDOM";
 const renderedProjects = document.querySelector(".rendered-projects");
@@ -34,9 +33,6 @@ export function renderProject(proj) {
     proj.toggleDoneStatus();
     localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
   });
-
-  // style the first projects differently
-  renderedProjects.firstElementChild.className = "clicked-first-project";
 
   const idToRemove = proj.id;
 
