@@ -26,9 +26,8 @@ function renderInputField(project) {
 
   addBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    // pass a specific project..
     addLittleTaskToProject(project);
-    renderLittleTaskOfProject(project);
+    renderLittleTask(project);
   });
 }
 
@@ -40,7 +39,7 @@ export function removeTaskSectionAndRenderInputField(project) {
 }
 
 // pull out project.task array from each project
-export function renderLittleTaskOfProject(project) {
+export function renderLittleTask(project) {
   const render = (task) => {
     const div = document.createElement("div");
     div.classList.add("task-rendered");
@@ -57,10 +56,25 @@ export function renderLittleTaskOfProject(project) {
     deleteBtn.textContent = "delete";
     div.appendChild(deleteBtn);
 
+    const idToRemove = task.id;
+    deleteBtn.addEventListener("click", () => {
+      deleteLittleTask(idToRemove);
+      while (renderedTasks.firstChild) {
+        renderedTasks.firstChild.remove();
+      }
+      project.task.forEach(render);
+    });
+
     const doneStatus = document.createElement("input");
     doneStatus.setAttribute("type", "checkbox");
     div.appendChild(doneStatus);
   };
+
+  function deleteLittleTask(task) {
+    const indexToRemove = project.task.findIndex((el) => el.id === task);
+    project.task.splice(indexToRemove, 1);
+    console.log(indexToRemove);
+  }
 
   while (renderedTasks.firstChild) {
     renderedTasks.firstChild.remove();

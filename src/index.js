@@ -3,7 +3,6 @@ import { rerenderTaskArr } from "./all-taskDOM";
 import { addProject } from "./project.js";
 import { rerenderProjectArr } from "./projectDOM";
 import { addTask } from "./all-task";
-// import { rerenderTaskArr } from "./taskDOM";
 
 const addBtn = document.querySelector(".add-btn");
 const projectTitle = document.querySelector(".project-title");
