@@ -11,7 +11,7 @@ export class Project {
   }
 }
 
-export const projectsArr =
+export let projectsArr =
   JSON.parse(localStorage.getItem("storageProjectsArr"))?.map((obj) =>
     Object.assign(new Project(), obj)
   ) ?? [];

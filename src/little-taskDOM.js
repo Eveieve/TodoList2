@@ -1,10 +1,8 @@
-import { addLittleTaskToProject } from "./little-task";
-import { projectsArr } from "./project";
+import { addLittleTaskToProject, toggleDoneStatus } from "./little-task";
+import { projectsArr, Project as Task } from "./project";
 
 const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
-
-// create input field when that project is clicked
 
 function renderInputField(project) {
   const projectTitle = document.createElement("h2");
@@ -75,6 +73,12 @@ export function renderLittleTask(project) {
     const doneStatus = document.createElement("input");
     doneStatus.setAttribute("type", "checkbox");
     div.appendChild(doneStatus);
+
+    doneStatus.addEventListener("click", () => {
+      console.log(task);
+      toggleDoneStatus(task);
+      localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
+    });
   };
 
   function deleteLittleTask(task) {

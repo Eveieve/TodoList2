@@ -11,3 +11,7 @@ export function addLittleTaskToProject(projectToAddTask) {
   // add task to the storage too!
   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }
+
+export function toggleDoneStatus(task) {
+  task.doneStatus = !task.doneStatus;
+}
