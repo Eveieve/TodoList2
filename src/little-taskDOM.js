@@ -1,10 +1,15 @@
 import { addLittleTaskToProject } from "./little-task";
 import { projectsArr } from "./project";
+
 const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
 
 // create input field when that project is clicked
 function renderInputField(project) {
+  const projectTitle = document.createElement("h2");
+  projectTitle.textContent = project.title;
+  taskSection.appendChild(projectTitle);
+
   taskSection.appendChild(renderedTasks);
 
   const form = document.createElement("form");
@@ -81,8 +86,4 @@ export function renderLittleTask(project) {
     renderedTasks.firstChild.remove();
   }
   project.task.forEach(render);
-
-  const projectTitle = document.createElement("h2");
-  projectTitle.textContent = project.title;
-  renderedTasks.appendChild(projectTitle);
 }
