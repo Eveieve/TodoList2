@@ -25,6 +25,8 @@ export function renderProject(proj) {
 
   const doneStatus = document.createElement("input");
   doneStatus.setAttribute("type", "checkbox");
+  if (proj.doneStatus) doneStatus.setAttribute("checked", "checked");
+
   div.appendChild(doneStatus);
 
   doneStatus.addEventListener("click", () => {
