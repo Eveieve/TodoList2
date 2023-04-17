@@ -5,12 +5,11 @@ const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
 
 // create input field when that project is clicked
+
 function renderInputField(project) {
   const projectTitle = document.createElement("h2");
   projectTitle.textContent = project.title;
   taskSection.appendChild(projectTitle);
-
-  taskSection.appendChild(renderedTasks);
 
   const form = document.createElement("form");
   taskSection.appendChild(form);
@@ -28,6 +27,8 @@ function renderInputField(project) {
   addBtn.classList.add("task-button");
   addBtn.textContent = "add";
   form.appendChild(addBtn);
+
+  taskSection.appendChild(renderedTasks);
 
   addBtn.addEventListener("click", (e) => {
     e.preventDefault();
