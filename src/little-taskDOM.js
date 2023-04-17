@@ -4,7 +4,7 @@ const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
 
 // create input field when that project is clicked
-function renderInputField() {
+function renderInputField(project) {
   taskSection.appendChild(renderedTasks);
 
   const form = document.createElement("form");
@@ -27,16 +27,16 @@ function renderInputField() {
   addBtn.addEventListener("click", (e) => {
     e.preventDefault();
     // pass a specific project..
-    addLittleTaskToProject();
+    addLittleTaskToProject(project);
     renderLittleTaskOfProject();
   });
 }
 
-export function removeTaskSectionAndRenderInputField() {
+export function removeTaskSectionAndRenderInputField(project) {
   while (taskSection.firstChild) {
     taskSection.firstChild.remove();
   }
-  renderInputField();
+  renderInputField(project);
 }
 
 // pull out project.task array from each project

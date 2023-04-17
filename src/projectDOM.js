@@ -14,7 +14,7 @@ export function renderProject(proj) {
   renderedProjects.appendChild(div);
 
   div.addEventListener("click", () => {
-    removeTaskSectionAndRenderInputField();
+    removeTaskSectionAndRenderInputField(proj);
     renderLittleTaskOfProject(proj);
   });
   const editBtn = document.createElement("button");
