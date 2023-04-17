@@ -28,7 +28,7 @@ function renderInputField(project) {
     e.preventDefault();
     // pass a specific project..
     addLittleTaskToProject(project);
-    renderLittleTaskOfProject();
+    renderLittleTaskOfProject(project);
   });
 }
 
