@@ -41,11 +41,11 @@ export function removeTaskSectionAndRenderInputField() {
 
 // pull out project.task array from each project
 export function renderLittleTaskOfProject(project) {
-  const render = (task) => {
-    const projectTitle = document.createElement("h2");
-    projectTitle.textContent = project.title;
-    taskSection.appendChild(projectTitle);
+  const projectTitle = document.createElement("h2");
+  projectTitle.textContent = project.title;
+  taskSection.appendChild(projectTitle);
 
+  const render = (task) => {
     const div = document.createElement("div");
     div.classList.add("task-rendered");
 
