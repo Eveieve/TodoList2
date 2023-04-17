@@ -37,7 +37,7 @@ function renderInputField(project) {
   });
 }
 
-export function removeTaskSectionAndRenderInputField(project) {
+export function rerenderInputField(project) {
   while (taskSection.firstChild) {
     taskSection.firstChild.remove();
   }

@@ -1,8 +1,5 @@
 import { projectsArr, deleteProject } from "./project";
-import {
-  removeTaskSectionAndRenderInputField,
-  renderLittleTask,
-} from "./little-taskDOM";
+import { rerenderInputField, renderLittleTask } from "./little-taskDOM";
 
 const renderedProjects = document.querySelector(".rendered-projects");
 
@@ -15,7 +12,7 @@ export function renderProject(proj) {
   renderedProjects.appendChild(div);
 
   div.addEventListener("click", () => {
-    removeTaskSectionAndRenderInputField(proj);
+    rerenderInputField(proj);
     renderLittleTask(proj);
   });
   const editBtn = document.createElement("button");

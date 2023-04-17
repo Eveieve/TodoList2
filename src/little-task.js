@@ -11,7 +11,3 @@ export function addLittleTaskToProject(projectToAddTask) {
   // add task to the storage too!
   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }
-
-// export function deleteLittleTask(task) {
-//   task.filter((el) => el.id !== task.id);
-// }
