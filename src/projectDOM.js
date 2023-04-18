@@ -63,7 +63,8 @@ export function renderProject(proj) {
   deleteBtn.textContent = "delete";
   renderedDiv.appendChild(deleteBtn);
 
-  doneStatus.addEventListener("click", () => {
+  doneStatus.addEventListener("click", (e) => {
+    e.stopPropagation();
     proj.toggleDoneStatus();
     localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
   });
