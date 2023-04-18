@@ -1,8 +1,9 @@
 import { addLittleTaskToProject, toggleDoneStatus } from "./little-task";
 import { projectsArr, Project as Task } from "./project";
+import { editTask } from "./little-task";
 
 const taskSection = document.querySelector(".task-section");
-const renderedTasks = document.createElement("div");
+const renderedTasks = document.createElement("renderedTaskBox");
 
 function renderInputField(project) {
   const projectTitle = document.createElement("h2");
@@ -48,20 +49,30 @@ export function rerenderInputField(project) {
 // pull out project.task array from each project
 export function renderLittleTask(project) {
   const render = (task) => {
-    const div = document.createElement("div");
-    div.classList.add("task-rendered");
+    const renderedTaskBox = document.createElement("div");
+    renderedTaskBox.classList.add("rendered-div");
+    renderedTaskBox.setAttribute("id", `${task.id}`);
+    renderedTasks.appendChild(renderedTaskBox);
 
-    div.setAttribute("id", `${task.id}`);
-    div.textContent = task.title;
-    renderedTasks.appendChild(div);
+    const taskTitle = document.createElement("input");
+    taskTitle.value = task.title;
+    renderedTaskBox.appendChild(taskTitle);
 
     const editBtn = document.createElement("button");
     editBtn.textContent = "edit";
-    div.appendChild(editBtn);
+    renderedTaskBox.appendChild(editBtn);
+
+    editBtn.addEventListener("click", () => {
+      editTask(taskTitle, task);
+      while (renderedTasks.firstChild) {
+        renderedTasks.firstChild.remove();
+      }
+      project.task.forEach(render);
+    });
 
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "delete";
-    div.appendChild(deleteBtn);
+    renderedTaskBox.appendChild(deleteBtn);
 
     const idToRemove = task.id;
 
@@ -76,7 +87,7 @@ export function renderLittleTask(project) {
     const doneStatus = document.createElement("input");
     doneStatus.setAttribute("type", "checkbox");
     if (task.doneStatus) doneStatus.setAttribute("checked", "checked");
-    div.appendChild(doneStatus);
+    renderedTaskBox.appendChild(doneStatus);
 
     doneStatus.addEventListener("click", () => {
       console.log(task);

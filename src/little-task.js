@@ -15,3 +15,8 @@ export function addLittleTaskToProject(projectToAddTask) {
 export function toggleDoneStatus(task) {
   task.doneStatus = !task.doneStatus;
 }
+
+export function editTask(taskTitle, taskToEdit) {
+  taskToEdit.title = taskTitle.value;
+  localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
+}

@@ -29,11 +29,9 @@
 
 input:focus {
   outline-style: none;
-  border: 2px solid rgb(148, 181, 251);
+  border: 2px solid rgb(124, 164, 250);
   
 }
-
-
 
 .rendered-div {
   display: flex

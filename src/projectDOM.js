@@ -11,7 +11,7 @@ projectSection.appendChild(renderedProjects);
 export function renderProject(proj) {
   // renderedDiv to contain rendered project box
   const renderedDiv = document.createElement("div");
-  // renderedDiv.classList.add("rendered-div");
+  renderedDiv.classList.add("rendered-div");
   renderedProjects.appendChild(renderedDiv);
 
   renderedDiv.classList.add("project-rendered");
