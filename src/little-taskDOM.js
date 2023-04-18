@@ -55,6 +55,16 @@ export function renderLittleTask(project) {
     renderedTaskBox.setAttribute("id", `${task.id}`);
     renderedTasks.appendChild(renderedTaskBox);
 
+    const doneStatus = document.createElement("input");
+    doneStatus.setAttribute("type", "checkbox");
+    if (task.doneStatus) doneStatus.setAttribute("checked", "checked");
+    renderedTaskBox.appendChild(doneStatus);
+
+    doneStatus.addEventListener("click", () => {
+      toggleDoneStatus(task);
+      localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
+    });
+
     const taskTitle = document.createElement("input");
     taskTitle.classList.add("rendered-task-title");
     taskTitle.setAttribute("readonly", "readonly");
@@ -62,9 +72,11 @@ export function renderLittleTask(project) {
     renderedTaskBox.appendChild(taskTitle);
     taskTitle.addEventListener("dblclick", () => {
       taskTitle.classList.add("editable");
-
       taskTitle.focus();
       taskTitle.readOnly = false;
+    });
+    taskTitle.addEventListener("click", () => {
+      doneStatus.click();
     });
 
     taskTitle.addEventListener("keypress", (e) => {
@@ -98,17 +110,6 @@ export function renderLittleTask(project) {
         renderedTasks.firstChild.remove();
       }
       project.task.forEach(render);
-    });
-
-    const doneStatus = document.createElement("input");
-    doneStatus.setAttribute("type", "checkbox");
-    if (task.doneStatus) doneStatus.setAttribute("checked", "checked");
-    renderedTaskBox.appendChild(doneStatus);
-
-    doneStatus.addEventListener("click", () => {
-      console.log(task);
-      toggleDoneStatus(task);
-      localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
     });
   };
 

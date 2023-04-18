@@ -61,3 +61,8 @@ input:focus {
 input {
   cursor: pointer;
 }
+
+input[type="checkbox"]{
+width: 4em;
+accent-color: var(--blue);
+}
