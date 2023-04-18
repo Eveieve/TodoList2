@@ -13,7 +13,13 @@ export function renderProject(proj) {
   // renderedDiv to contain rendered project box
   const renderedDiv = document.createElement("div");
   renderedDiv.classList.add("rendered-div");
-  renderedProjects.appendChild(renderedDiv);
+  renderedProjects.prepend(renderedDiv);
+
+  const doneStatus = document.createElement("input");
+  doneStatus.setAttribute("type", "checkbox");
+  if (proj.doneStatus) doneStatus.setAttribute("checked", "checked");
+
+  renderedDiv.appendChild(doneStatus);
 
   renderedDiv.classList.add("project-rendered");
   renderedDiv.setAttribute("id", `${proj.id}`);
@@ -24,7 +30,6 @@ export function renderProject(proj) {
   renderedDiv.appendChild(projectTitle);
   projectTitle.addEventListener("dblclick", () => {
     projectTitle.classList.add("editable");
-
     projectTitle.focus();
     projectTitle.readOnly = false;
   });
@@ -49,17 +54,14 @@ export function renderProject(proj) {
     }
   });
 
+  // projectTitle.addEventListener("click", () => {
+  //   doneStatus.click();
+  // });
   renderedDiv.appendChild(editBtn);
 
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "delete";
   renderedDiv.appendChild(deleteBtn);
-
-  const doneStatus = document.createElement("input");
-  doneStatus.setAttribute("type", "checkbox");
-  if (proj.doneStatus) doneStatus.setAttribute("checked", "checked");
-
-  renderedDiv.appendChild(doneStatus);
 
   doneStatus.addEventListener("click", () => {
     proj.toggleDoneStatus();

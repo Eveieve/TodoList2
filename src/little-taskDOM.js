@@ -53,7 +53,7 @@ export function renderLittleTask(project) {
     const renderedTaskBox = document.createElement("div");
     renderedTaskBox.classList.add("rendered-div");
     renderedTaskBox.setAttribute("id", `${task.id}`);
-    renderedTasks.appendChild(renderedTaskBox);
+    renderedTasks.prepend(renderedTaskBox);
 
     const doneStatus = document.createElement("input");
     doneStatus.setAttribute("type", "checkbox");

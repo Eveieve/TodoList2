@@ -1,13 +1,15 @@
 import "./styles.css";
 import { rerenderTaskArr } from "./all-taskDOM";
 import { addProject } from "./project.js";
-import { rerenderProjectArr } from "./projectDOM";
+import { rerenderProjectArr, removeBtnsDefaultProject } from "./projectDOM";
 import { addTask } from "./all-task";
 
 const addBtn = document.querySelector(".add-btn");
 const projectTitle = document.querySelector(".project-title");
-
+const renderedProjects = document.querySelector(".rendered-projects");
 rerenderProjectArr();
+
+console.log(renderedProjects.firstChild);
 
 addBtn.addEventListener("click", (e) => {
   e.preventDefault();
