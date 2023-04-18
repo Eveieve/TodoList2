@@ -22,6 +22,10 @@ export function renderProject(proj) {
   projectTitle.value = proj.title;
   projectTitle.classList.add("rendered-project-title", "rendered-title");
   renderedDiv.appendChild(projectTitle);
+  projectTitle.addEventListener("dblclick", () => {
+    projectTitle.classList.add("editable");
+    projectTitle.readOnly = false;
+  });
 
   renderedDiv.addEventListener("click", () => {
     rerenderInputField(proj);

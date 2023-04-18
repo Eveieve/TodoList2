@@ -50,7 +50,16 @@
 
 input:focus {
   outline-style: none;
-  border: 2px solid rgb(124, 164, 250);
+  /* border: 2px solid rgb(124, 164, 250); */
+
   
 }
 
+.editable {
+  border: 2px solid rgb(124, 164, 250);
+ 
+}
+
+input {
+  cursor: pointer;
+}

@@ -61,6 +61,7 @@ export function renderLittleTask(project) {
     taskTitle.value = task.title;
     renderedTaskBox.appendChild(taskTitle);
     taskTitle.addEventListener("dblclick", () => {
+      taskTitle.classList.add("editable");
       taskTitle.readOnly = false;
     });
 
