@@ -3,7 +3,7 @@ import { projectsArr, Project as Task } from "./project";
 import { editTask } from "./little-task";
 
 const taskSection = document.querySelector(".task-section");
-const renderedTasks = document.createElement("renderedTaskBox");
+const renderedTasks = document.createElement("div");
 
 function renderInputField(project) {
   const projectTitle = document.createElement("h2");
@@ -58,6 +58,12 @@ export function renderLittleTask(project) {
     taskTitle.value = task.title;
     renderedTaskBox.appendChild(taskTitle);
 
+    taskTitle.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        editBtn.click();
+      }
+    });
     const editBtn = document.createElement("button");
     editBtn.textContent = "edit";
     renderedTaskBox.appendChild(editBtn);
