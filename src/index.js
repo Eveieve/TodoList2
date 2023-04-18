@@ -8,11 +8,14 @@ const addBtn = document.querySelector(".add-btn");
 const projectTitle = document.querySelector(".project-title");
 
 rerenderProjectArr();
+
 addBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  addProject();
-  rerenderProjectArr();
-  projectTitle.value = "";
+  if (projectTitle.value !== "") {
+    addProject();
+    rerenderProjectArr();
+    projectTitle.value = "";
+  }
 });
 
 projectTitle.addEventListener("keypress", (e) => {
@@ -22,13 +25,13 @@ projectTitle.addEventListener("keypress", (e) => {
   }
 });
 
-const taskAddBtn = document.querySelector(".task-add-btn");
-const taskTitle = document.querySelector(".task-title");
+// const taskAddBtn = document.querySelector(".task-add-btn");
+// const taskTitle = document.querySelector(".task-title");
 
-rerenderTaskArr();
+// rerenderTaskArr();
 
-taskAddBtn.addEventListener("click", () => {
-  addTask();
-  rerenderTaskArr();
-  taskTitle.value = "";
-});
+// taskAddBtn.addEventListener("click", () => {
+//   addTask();
+//   rerenderTaskArr();
+//   taskTitle.value = "";
+// });

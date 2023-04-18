@@ -13,7 +13,7 @@
   .project-form {
     display: flex;
   }
-  
+
   .sec-container {
     background-color: aquamarine;
     display: grid;
@@ -21,14 +21,19 @@
    height: 100%;
    
   }
-  .project-title-rendered {
- background-color: bisque;
+
+  /* both rendered tasks & projects style */
+  .rendered-title {
+   border-style: none;
   }
 
-.clicked-first-project,
-.clicked-project {
-    background-color: burlywood;
-  }
+input:focus {
+  outline-style: none;
+  border: 2px solid rgb(148, 181, 251);
+  
+}
+
+
 
 .rendered-div {
   display: flex

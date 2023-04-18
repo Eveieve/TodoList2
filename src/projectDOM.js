@@ -11,14 +11,14 @@ projectSection.appendChild(renderedProjects);
 export function renderProject(proj) {
   // renderedDiv to contain rendered project box
   const renderedDiv = document.createElement("div");
-  renderedDiv.classList.add("rendered-div");
+  // renderedDiv.classList.add("rendered-div");
   renderedProjects.appendChild(renderedDiv);
 
-  // renderedDiv.classList.add("project-title-rendered");
+  renderedDiv.classList.add("project-rendered");
   renderedDiv.setAttribute("id", `${proj.id}`);
   const projectTitle = document.createElement("input");
   projectTitle.value = proj.title;
-  projectTitle.classList.add = "project-title-rendered";
+  projectTitle.classList.add("project-title-rendered", "rendered-title");
   renderedDiv.appendChild(projectTitle);
 
   renderedDiv.addEventListener("click", () => {

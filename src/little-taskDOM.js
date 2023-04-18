@@ -30,8 +30,11 @@ function renderInputField(project) {
 
   addBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    addLittleTaskToProject(project);
-    renderLittleTask(project);
+    if (inputTitle.value !== "") {
+      addLittleTaskToProject(project);
+      renderLittleTask(project);
+    }
+    inputTitle.value = "";
   });
 }
 
