@@ -24,6 +24,8 @@ export function renderProject(proj) {
   renderedDiv.appendChild(projectTitle);
   projectTitle.addEventListener("dblclick", () => {
     projectTitle.classList.add("editable");
+
+    projectTitle.focus();
     projectTitle.readOnly = false;
   });
 

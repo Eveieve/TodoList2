@@ -51,11 +51,9 @@
 input:focus {
   outline-style: none;
   /* border: 2px solid rgb(124, 164, 250); */
-
-  
 }
 
-.editable {
+.editable:focus {
   border: 2px solid rgb(124, 164, 250);
  
 }
