@@ -34,6 +34,13 @@ export function renderProject(proj) {
     rerenderProjectArr();
   });
 
+  projectTitle.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      editBtn.click();
+    }
+  });
+
   renderedDiv.appendChild(editBtn);
 
   const deleteBtn = document.createElement("button");
