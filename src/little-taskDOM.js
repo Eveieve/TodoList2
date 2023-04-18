@@ -4,6 +4,7 @@ import { editTask } from "./little-task";
 
 const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
+renderedTasks.classList.add("rendered-tasks");
 
 function renderInputField(project) {
   const projectTitle = document.createElement("h2");
@@ -55,6 +56,7 @@ export function renderLittleTask(project) {
     renderedTasks.appendChild(renderedTaskBox);
 
     const taskTitle = document.createElement("input");
+    taskTitle.classList.add("rendered-task-title");
     taskTitle.value = task.title;
     renderedTaskBox.appendChild(taskTitle);
 

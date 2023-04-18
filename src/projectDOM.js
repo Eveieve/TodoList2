@@ -3,6 +3,7 @@ import { rerenderInputField, renderLittleTask } from "./little-taskDOM";
 
 const projectSection = document.querySelector(".project-section");
 const renderedProjects = document.querySelector(".rendered-projects");
+
 const projectForm = document.querySelector(".project-form");
 
 projectSection.appendChild(projectForm);
@@ -18,7 +19,7 @@ export function renderProject(proj) {
   renderedDiv.setAttribute("id", `${proj.id}`);
   const projectTitle = document.createElement("input");
   projectTitle.value = proj.title;
-  projectTitle.classList.add("project-title-rendered", "rendered-title");
+  projectTitle.classList.add("rendered-project-title", "rendered-title");
   renderedDiv.appendChild(projectTitle);
 
   renderedDiv.addEventListener("click", () => {
