@@ -57,8 +57,12 @@ export function renderLittleTask(project) {
 
     const taskTitle = document.createElement("input");
     taskTitle.classList.add("rendered-task-title");
+    taskTitle.setAttribute("readonly", "readonly");
     taskTitle.value = task.title;
     renderedTaskBox.appendChild(taskTitle);
+    taskTitle.addEventListener("dblclick", () => {
+      taskTitle.readOnly = false;
+    });
 
     taskTitle.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
@@ -66,6 +70,7 @@ export function renderLittleTask(project) {
         editBtn.click();
       }
     });
+
     const editBtn = document.createElement("button");
     editBtn.textContent = "edit";
     renderedTaskBox.appendChild(editBtn);

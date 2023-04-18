@@ -18,6 +18,7 @@ export function renderProject(proj) {
   renderedDiv.classList.add("project-rendered");
   renderedDiv.setAttribute("id", `${proj.id}`);
   const projectTitle = document.createElement("input");
+  projectTitle.setAttribute("readonly", "readonly");
   projectTitle.value = proj.title;
   projectTitle.classList.add("rendered-project-title", "rendered-title");
   renderedDiv.appendChild(projectTitle);
