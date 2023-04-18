@@ -8,7 +8,8 @@ const addBtn = document.querySelector(".add-btn");
 const projectTitle = document.querySelector(".project-title");
 
 rerenderProjectArr();
-addBtn.addEventListener("click", () => {
+addBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   addProject();
   rerenderProjectArr();
   projectTitle.value = "";
@@ -18,6 +19,7 @@ const taskAddBtn = document.querySelector(".task-add-btn");
 const taskTitle = document.querySelector(".task-title");
 
 rerenderTaskArr();
+
 taskAddBtn.addEventListener("click", () => {
   addTask();
   rerenderTaskArr();

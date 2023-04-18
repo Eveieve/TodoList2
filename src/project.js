@@ -11,7 +11,7 @@ export class Project {
   }
 }
 
-export let projectsArr =
+export const projectsArr =
   JSON.parse(localStorage.getItem("storageProjectsArr"))?.map((obj) =>
     Object.assign(new Project(), obj)
   ) ?? [];
@@ -29,5 +29,11 @@ export function addProject() {
 export function deleteProject(ID) {
   const indexToRemove = projectsArr.findIndex((proj) => proj.id === ID);
   projectsArr.splice(indexToRemove, 1);
+  localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
+}
+
+export function editProject(projectTitle, projectToEdit) {
+  // const projectTitle = document.querySelector(".project-title-rendered").value;
+  projectToEdit.title = projectTitle.value;
   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }

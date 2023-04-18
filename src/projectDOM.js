@@ -1,33 +1,50 @@
-import { projectsArr, deleteProject } from "./project";
+import { projectsArr, deleteProject, editProject } from "./project";
 import { rerenderInputField, renderLittleTask } from "./little-taskDOM";
 
+const projectSection = document.querySelector(".project-section");
 const renderedProjects = document.querySelector(".rendered-projects");
+const projectForm = document.querySelector(".project-form");
+
+projectSection.appendChild(projectForm);
+projectSection.appendChild(renderedProjects);
 
 export function renderProject(proj) {
-  const div = document.createElement("div");
-  div.classList.add("project-title-rendered");
+  // renderedDiv to contain rendered project box
+  const renderedDiv = document.createElement("div");
+  renderedDiv.classList.add("rendered-div");
+  renderedProjects.appendChild(renderedDiv);
 
-  div.setAttribute("id", `${proj.id}`);
-  div.textContent = proj.title;
-  renderedProjects.appendChild(div);
+  // renderedDiv.classList.add("project-title-rendered");
+  renderedDiv.setAttribute("id", `${proj.id}`);
+  const projectTitle = document.createElement("input");
+  projectTitle.value = proj.title;
+  projectTitle.classList.add = "project-title-rendered";
+  renderedDiv.appendChild(projectTitle);
 
-  div.addEventListener("click", () => {
+  renderedDiv.addEventListener("click", () => {
     rerenderInputField(proj);
     renderLittleTask(proj);
   });
+
   const editBtn = document.createElement("button");
   editBtn.textContent = "edit";
-  div.appendChild(editBtn);
+
+  editBtn.addEventListener("click", () => {
+    editProject(projectTitle, proj);
+    rerenderProjectArr();
+  });
+
+  renderedDiv.appendChild(editBtn);
 
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "delete";
-  div.appendChild(deleteBtn);
+  renderedDiv.appendChild(deleteBtn);
 
   const doneStatus = document.createElement("input");
   doneStatus.setAttribute("type", "checkbox");
   if (proj.doneStatus) doneStatus.setAttribute("checked", "checked");
 
-  div.appendChild(doneStatus);
+  renderedDiv.appendChild(doneStatus);
 
   doneStatus.addEventListener("click", () => {
     proj.toggleDoneStatus();
