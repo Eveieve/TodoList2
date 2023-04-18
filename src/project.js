@@ -33,7 +33,6 @@ export function deleteProject(ID) {
 }
 
 export function editProject(projectTitle, projectToEdit) {
-  // const projectTitle = document.querySelector(".project-title-rendered").value;
   projectToEdit.title = projectTitle.value;
   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }

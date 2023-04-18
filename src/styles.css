@@ -8,8 +8,10 @@
   .project-section {
     background-color: beige;
     height: 100%;
-    
-   
+  }
+  
+  .project-form {
+    display: flex;
   }
   
   .sec-container {
