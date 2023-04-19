@@ -1,6 +1,6 @@
 import { addLittleTaskToProject, toggleDoneStatus } from "./little-task";
 import { projectsArr, Project as Task } from "./project";
-import { editTask, takeNotes } from "./little-task";
+import { editTask, takeNotes, addNotes } from "./little-task";
 
 const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
@@ -50,6 +50,13 @@ export function rerenderInputField(project) {
 // pull out project.task array from each project
 export function renderLittleTask(project) {
   const render = (task) => {
+    const notesAddBtn = document.querySelector(".notes-submit");
+    notesAddBtn.addEventListener("click", (e) => {
+      const notesValue = document.querySelector("#notes-input").value;
+      addNotes(task, notesValue); // gets added to all tasks?
+      e.stopPropagation();
+    });
+
     const renderedTaskBox = document.createElement("div");
     renderedTaskBox.classList.add("rendered-div");
     renderedTaskBox.setAttribute("id", `${task.id}`);
@@ -121,18 +128,6 @@ export function renderLittleTask(project) {
 
     notesDiv.addEventListener("click", () => {
       notesPopup.showModal();
-    });
-
-    const addNoteBtn = document.querySelector(".notes-submit");
-
-    const textAreaValue = document.getElementById("notes-input").value;
-
-    console.log(textAreaValue);
-    addNoteBtn.addEventListener("submit", (e) => {
-      e.stopImmediatePropagation();
-      e.preventDefault();
-      takeNotes(project, task, textAreaValue);
-      //   notesPopup.close();
     });
   };
 

@@ -9,8 +9,6 @@ const projectTitle = document.querySelector(".project-title");
 const renderedProjects = document.querySelector(".rendered-projects");
 rerenderProjectArr();
 
-console.log(new Task());
-
 addBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (projectTitle.value !== "") {

@@ -1,7 +1,4 @@
-// import { Task } from "./all-task";
 import { projectsArr, Project } from "./project";
-
-// add note taking property for task
 
 export class Task extends Project {
   constructor(title, dueDate, notes) {
@@ -31,10 +28,8 @@ export function editTask(taskTitle, taskToEdit) {
   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }
 
-export function takeNotes(project, task, littleTaskNotes) {
-  const littleTaskNotes = document.querySelector(".notes-textarea").value;
-
-  project.task.notes = littleTaskNotes;
-  console.log(task);
+export function addNotes(task, notesValue) {
+  // const notesValue = document.querySelector('#notes-input').value;
+  task.notes = notesValue;
   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }
