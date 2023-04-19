@@ -1,6 +1,6 @@
 import { addLittleTaskToProject, toggleDoneStatus } from "./little-task";
 import { projectsArr, Project as Task } from "./project";
-import { editTask, takeNotes, addNotes } from "./little-task";
+import { editTask, addNotes } from "./little-task";
 
 const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
@@ -50,12 +50,6 @@ export function rerenderInputField(project) {
 // pull out project.task array from each project
 export function renderLittleTask(project) {
   const render = (task) => {
-    const notesAddBtn = document.querySelector(".notes-submit");
-    notesAddBtn.addEventListener("click", () => {
-      const notesValue = document.querySelector("#notes-input").value;
-      addNotes(task, notesValue); // gets added to all tasks?
-    });
-
     const renderedTaskBox = document.createElement("div");
     renderedTaskBox.classList.add("rendered-div");
     renderedTaskBox.setAttribute("id", `${task.id}`);
@@ -109,23 +103,28 @@ export function renderLittleTask(project) {
 
     deleteBtn.addEventListener("click", () => {
       deleteLittleTask(idToRemove);
-      rerender(project, task);
+      rerender(project);
     });
-
-    const notesDiv = document.createElement("div");
-    notesDiv.textContent = "notes"; // change to note svg later
-    notesDiv.classList.add("notes-div");
-    renderedTaskBox.appendChild(notesDiv);
-
     const notesPopup = document.querySelector(".modal");
 
+    const notesDiv = document.createElement("div");
     notesDiv.addEventListener("click", () => {
       notesPopup.showModal();
     });
+    notesDiv.textContent = "notes"; // change to note svg later
+    notesDiv.classList.add("notes-div");
+    renderedTaskBox.appendChild(notesDiv);
+    const notesAddBtn = document.querySelector(".notes-submit");
+    const notesInput = document.querySelector("#notes-input");
+    notesAddBtn.addEventListener("click", () => {
+      let notesValue = notesInput.value;
+      addNotes(task, notesValue); // gets added to all tasks?
+      console.log(task);
+    });
   };
 
-  function deleteLittleTask(task) {
-    const indexToRemove = project.task.findIndex((el) => el.id === task);
+  function deleteLittleTask(taskID) {
+    const indexToRemove = project.task.findIndex((el) => el.id === taskID);
     project.task.splice(indexToRemove, 1);
     localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
   }
@@ -135,6 +134,7 @@ export function renderLittleTask(project) {
       renderedTasks.firstChild.remove();
     }
     console.log(project.task);
+    // loop task array in each project and render it
     project.task.forEach(render);
   }
   rerender(project);

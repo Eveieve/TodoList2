@@ -10,8 +10,8 @@ export class Task extends Project {
 export function addLittleTaskToProject(projectToAddTask) {
   const littleTaskTitle = document.querySelector(".task-title").value;
   const littleTaskDate = document.querySelector(".task-date").value;
-  const littleTaskNotes = document.querySelector(".notes-textarea").value;
-  const littleTask = new Task(littleTaskTitle, littleTaskDate, littleTaskNotes);
+  //   const littleTaskNotes = document.querySelector(".notes-textarea").value;
+  const littleTask = new Task(littleTaskTitle, littleTaskDate);
   console.log(projectsArr);
   projectToAddTask.task.push(littleTask);
 
@@ -28,8 +28,9 @@ export function editTask(taskTitle, taskToEdit) {
   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }
 
-export function addNotes(task, notesValue) {
-  // const notesValue = document.querySelector('#notes-input').value;
-  task.notes = notesValue;
+export function addNotes(taskToNote, notesValue) {
+  //   const taskToNote = project.task.find((el) => el.id === taskID);
+  //   console.log(taskToNote);
+  taskToNote.notes = notesValue;
   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }
