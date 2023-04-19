@@ -1,6 +1,6 @@
 import { addLittleTaskToProject, toggleDoneStatus } from "./little-task";
 import { projectsArr, Project as Task } from "./project";
-import { editTask } from "./little-task";
+import { editTask, takeNotes } from "./little-task";
 
 const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
@@ -110,6 +110,29 @@ export function renderLittleTask(project) {
         renderedTasks.firstChild.remove();
       }
       project.task.forEach(render);
+    });
+
+    const notesDiv = document.createElement("div");
+    notesDiv.textContent = "notes"; // change to note svg later
+    notesDiv.classList.add("notes-div");
+    renderedTaskBox.appendChild(notesDiv);
+
+    const notesPopup = document.querySelector(".modal");
+
+    notesDiv.addEventListener("click", () => {
+      notesPopup.showModal();
+    });
+
+    const addNoteBtn = document.querySelector(".notes-submit");
+
+    const textAreaValue = document.getElementById("notes-input").value;
+
+    console.log(textAreaValue);
+    addNoteBtn.addEventListener("submit", (e) => {
+      e.stopImmediatePropagation();
+      e.preventDefault();
+      takeNotes(project, task, textAreaValue);
+      //   notesPopup.close();
     });
   };
 

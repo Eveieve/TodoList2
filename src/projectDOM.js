@@ -28,6 +28,7 @@ export function renderProject(proj) {
   projectTitle.value = proj.title;
   projectTitle.classList.add("rendered-project-title", "rendered-title");
   renderedDiv.appendChild(projectTitle);
+
   projectTitle.addEventListener("dblclick", () => {
     projectTitle.classList.add("editable");
     projectTitle.focus();
@@ -54,9 +55,6 @@ export function renderProject(proj) {
     }
   });
 
-  // projectTitle.addEventListener("click", () => {
-  //   doneStatus.click();
-  // });
   renderedDiv.appendChild(editBtn);
 
   const deleteBtn = document.createElement("button");
