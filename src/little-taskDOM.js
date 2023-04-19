@@ -105,21 +105,36 @@ export function renderLittleTask(project) {
       deleteLittleTask(idToRemove);
       rerender(project);
     });
-    const notesPopup = document.querySelector(".modal");
 
     const notesDiv = document.createElement("div");
-    notesDiv.addEventListener("click", () => {
-      notesPopup.showModal();
-    });
     notesDiv.textContent = "notes"; // change to note svg later
     notesDiv.classList.add("notes-div");
     renderedTaskBox.appendChild(notesDiv);
-    const notesAddBtn = document.querySelector(".notes-submit");
-    const notesInput = document.querySelector("#notes-input");
-    notesAddBtn.addEventListener("click", () => {
+    const dialog = document.createElement("dialog");
+    dialog.classList.add("modal");
+    document.body.appendChild(dialog);
+    const notesPopup = document.createElement("div");
+    // notesPopup.classList.add("notes-popup-visible");
+    dialog.appendChild(notesPopup);
+    const form = document.createElement("form");
+    form.classList.add("notes-form");
+    notesPopup.appendChild(form);
+
+    const notesInput = document.createElement("textarea");
+    const notesAddBtn = document.createElement("button");
+    notesAddBtn.textContent = "add note";
+    form.appendChild(notesInput);
+    form.appendChild(notesAddBtn);
+
+    notesDiv.addEventListener("click", () => {
+      dialog.showModal();
+    });
+    notesAddBtn.addEventListener("click", (e) => {
+      e.preventDefault();
       let notesValue = notesInput.value;
-      addNotes(task, notesValue); // gets added to all tasks?
+      addNotes(task, notesValue);
       console.log(task);
+      dialog.close();
     });
   };
 
