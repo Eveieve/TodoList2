@@ -1,6 +1,6 @@
 import { addLittleTaskToProject, toggleDoneStatus } from "./little-task";
 import { projectsArr, Project as Task } from "./project";
-import { editTask, takeNotes, addNotes } from "./little-task";
+import { editTask, addNotes } from "./little-task";
 
 const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
@@ -50,12 +50,6 @@ export function rerenderInputField(project) {
 // pull out project.task array from each project
 export function renderLittleTask(project) {
   const render = (task) => {
-    const notesAddBtn = document.querySelector(".notes-submit");
-    notesAddBtn.addEventListener("click", () => {
-      const notesValue = document.querySelector("#notes-input").value;
-      addNotes(task, notesValue); // gets added to all tasks?
-    });
-
     const renderedTaskBox = document.createElement("div");
     renderedTaskBox.classList.add("rendered-div");
     renderedTaskBox.setAttribute("id", `${task.id}`);
@@ -65,6 +59,18 @@ export function renderLittleTask(project) {
     doneStatus.setAttribute("type", "checkbox");
     if (task.doneStatus) doneStatus.setAttribute("checked", "checked");
     renderedTaskBox.appendChild(doneStatus);
+
+    const notesAddBtn = document.querySelector(".notes-submit");
+
+    const specificTask = project.task.find(
+      (el) => el.task.id === project.task.id
+    );
+    notesAddBtn.addEventListener("click", () => {
+      console.log(specificTask);
+      let notesValue = document.querySelector("#notes-input").value;
+      addNotes(specificTask, notesValue); // gets added to all tasks?
+      notesValue = "";
+    });
 
     doneStatus.addEventListener("click", () => {
       toggleDoneStatus(task);
@@ -109,7 +115,7 @@ export function renderLittleTask(project) {
 
     deleteBtn.addEventListener("click", () => {
       deleteLittleTask(idToRemove);
-      rerender(project, task);
+      rerender(project);
     });
 
     const notesDiv = document.createElement("div");
@@ -124,8 +130,8 @@ export function renderLittleTask(project) {
     });
   };
 
-  function deleteLittleTask(task) {
-    const indexToRemove = project.task.findIndex((el) => el.id === task);
+  function deleteLittleTask(taskID) {
+    const indexToRemove = project.task.findIndex((el) => el.id === taskID);
     project.task.splice(indexToRemove, 1);
     localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
   }
@@ -135,6 +141,7 @@ export function renderLittleTask(project) {
       renderedTasks.firstChild.remove();
     }
     console.log(project.task);
+    // loop task array in each project and render it
     project.task.forEach(render);
   }
   rerender(project);
