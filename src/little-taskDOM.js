@@ -51,10 +51,9 @@ export function rerenderInputField(project) {
 export function renderLittleTask(project) {
   const render = (task) => {
     const notesAddBtn = document.querySelector(".notes-submit");
-    notesAddBtn.addEventListener("click", (e) => {
+    notesAddBtn.addEventListener("click", () => {
       const notesValue = document.querySelector("#notes-input").value;
       addNotes(task, notesValue); // gets added to all tasks?
-      e.stopPropagation();
     });
 
     const renderedTaskBox = document.createElement("div");
@@ -99,10 +98,7 @@ export function renderLittleTask(project) {
 
     editBtn.addEventListener("click", () => {
       editTask(taskTitle, task);
-      while (renderedTasks.firstChild) {
-        renderedTasks.firstChild.remove();
-      }
-      project.task.forEach(render);
+      rerender(project);
     });
 
     const deleteBtn = document.createElement("button");
@@ -113,10 +109,7 @@ export function renderLittleTask(project) {
 
     deleteBtn.addEventListener("click", () => {
       deleteLittleTask(idToRemove);
-      while (renderedTasks.firstChild) {
-        renderedTasks.firstChild.remove();
-      }
-      project.task.forEach(render);
+      rerender(project, task);
     });
 
     const notesDiv = document.createElement("div");
@@ -137,8 +130,12 @@ export function renderLittleTask(project) {
     localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
   }
 
-  while (renderedTasks.firstChild) {
-    renderedTasks.firstChild.remove();
+  function rerender(project) {
+    while (renderedTasks.firstChild) {
+      renderedTasks.firstChild.remove();
+    }
+    console.log(project.task);
+    project.task.forEach(render);
   }
-  project.task.forEach(render);
+  rerender(project);
 }
