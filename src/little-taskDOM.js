@@ -128,11 +128,13 @@ export function renderLittleTask(project) {
     notesPopup.appendChild(form);
 
     const notesInput = document.createElement("textarea");
+    notesInput.textContent = `${task.notes}`;
     form.appendChild(notesInput);
 
     const dateInput = document.createElement("input");
     dateInput.classList.add("date-input");
     dateInput.setAttribute("type", "date");
+    dateInput.value = `${task.dueDate}`;
     form.appendChild(dateInput);
 
     const notesAddBtn = document.createElement("button");
