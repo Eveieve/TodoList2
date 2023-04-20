@@ -91,3 +91,6 @@ accent-color: var(--blue);
   height: 10rem;
  }
 
+.edit-btn {
+  display: none;
+}

@@ -95,6 +95,7 @@ export function renderLittleTask(project) {
 
     const editBtn = document.createElement("button");
     editBtn.textContent = "edit";
+    editBtn.classList.add("edit-btn");
     renderedTaskBox.appendChild(editBtn);
 
     editBtn.addEventListener("click", () => {
