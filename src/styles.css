@@ -7,6 +7,9 @@ html, body {
   width: 100%;
   height: 100%;
 }
+* {
+  border: 2px solid salmon;
+}
 .main-container {
     min-width: 10rem;
     background-color: rgb(255, 255, 255);
@@ -33,6 +36,7 @@ html, body {
   gap: 1rem;
   flex-direction: column;
 }
+
   .sec-container {
     background-color: white;
     display: grid;
@@ -42,15 +46,20 @@ html, body {
   }
 .rendered-div{
   display: flex;
- 
+  /* height: 3rem; */
 
 }
+
   /* both rendered tasks & projects style */
   .rendered-project-title,
   .rendered-task-title {
    border-style: none;
+   /* height: 3rem; */
   }
 
+.rendered-task-title {
+  height: 1rem;
+}
 input:focus {
   outline-style: none;
   /* border: 2px solid rgb(124, 164, 250); */

@@ -106,6 +106,7 @@ export function renderLittleTask(project) {
       rerender(project);
     });
 
+    // add notes
     const notesDiv = document.createElement("div");
     notesDiv.textContent = "notes"; // change to note svg later
     notesDiv.classList.add("notes-div");
@@ -129,12 +130,17 @@ export function renderLittleTask(project) {
     notesDiv.addEventListener("click", () => {
       dialog.showModal();
     });
+    const renderedNotes = document.createElement("p");
+    renderedNotes.classList.add("rendered-notes");
+    renderedTaskBox.appendChild(renderedNotes); // WHY
+
     notesAddBtn.addEventListener("click", (e) => {
       e.preventDefault();
       let notesValue = notesInput.value;
       addNotes(task, notesValue);
       console.log(task);
       dialog.close();
+      renderNotes(task, renderedNotes);
     });
   };
 
@@ -153,4 +159,13 @@ export function renderLittleTask(project) {
     project.task.forEach(render);
   }
   rerender(project);
+}
+
+function renderNotes(task, renderedNotes) {
+  renderedNotes.textContent = `${task.notes}`;
+  console.log(`${task.notes}`);
+}
+
+function renderEditedNotes(task, taskTitle, renderedNotes) {
+  renderedNotes.textContent = `${task.notes}`;
 }
