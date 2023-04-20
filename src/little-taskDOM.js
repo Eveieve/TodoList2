@@ -1,5 +1,5 @@
 import { addLittleTaskToProject, toggleDoneStatus } from "./little-task";
-import { projectsArr, Project as Task } from "./project";
+import { projectsArr } from "./project";
 import { editTask, addNotes } from "./little-task";
 
 const taskSection = document.querySelector(".task-section");
@@ -134,6 +134,8 @@ export function renderLittleTask(project) {
     renderedNotes.classList.add("rendered-notes");
     renderedTaskBox.appendChild(renderedNotes); // WHY
 
+    renderNotes(task, renderedNotes); // render notes even after refresh
+
     notesAddBtn.addEventListener("click", (e) => {
       e.preventDefault();
       let notesValue = notesInput.value;
@@ -154,18 +156,14 @@ export function renderLittleTask(project) {
     while (renderedTasks.firstChild) {
       renderedTasks.firstChild.remove();
     }
-    console.log(project.task);
+
     // loop task array in each project and render it
     project.task.forEach(render);
   }
   rerender(project);
 }
 
-function renderNotes(task, renderedNotes) {
+export function renderNotes(task, renderedNotes) {
   renderedNotes.textContent = `${task.notes}`;
   console.log(`${task.notes}`);
-}
-
-function renderEditedNotes(task, taskTitle, renderedNotes) {
-  renderedNotes.textContent = `${task.notes}`;
 }
