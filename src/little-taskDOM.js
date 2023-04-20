@@ -129,9 +129,14 @@ export function renderLittleTask(project) {
     notesPopup.appendChild(form);
 
     const notesInput = document.createElement("textarea");
-    const notesAddBtn = document.createElement("button");
-    notesAddBtn.textContent = "add note";
     form.appendChild(notesInput);
+
+    const dateInput = document.createElement("input");
+    dateInput.setAttribute("type", "date");
+    form.appendChild(dateInput);
+
+    const notesAddBtn = document.createElement("button");
+    notesAddBtn.textContent = "confirm";
     form.appendChild(notesAddBtn);
 
     notesDiv.addEventListener("click", () => {
