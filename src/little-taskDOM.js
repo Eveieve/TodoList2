@@ -183,6 +183,6 @@ function renderNotes(task, renderedNotes) {
 }
 
 function renderDate(task, renderedDate) {
-  renderedDate.textContent = `${task.dueDate}`;
+  if (task.dueDate !== undefined) renderedDate.textContent = `${task.dueDate}`;
   console.log(`${task.dueDate}`);
 }

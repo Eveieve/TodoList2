@@ -1,17 +1,16 @@
 import { projectsArr, Project } from "./project";
 
 export class Task extends Project {
-  constructor(title, dueDate, notes) {
+  constructor(title, dueDate) {
     super(title, dueDate);
-    this.notes = notes;
+    this.dueDate = "";
+    this.notes = "";
   }
 }
 
 export function addLittleTaskToProject(projectToAddTask) {
   const littleTaskTitle = document.querySelector(".task-title").value;
-  const littleTaskDate = document.querySelector(".task-date").value;
-  //   const littleTaskNotes = document.querySelector(".notes-textarea").value;
-  const littleTask = new Task(littleTaskTitle, littleTaskDate);
+  const littleTask = new Task(littleTaskTitle);
   console.log(projectsArr);
   projectToAddTask.task.push(littleTask);
 
