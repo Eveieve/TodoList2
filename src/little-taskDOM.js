@@ -64,12 +64,15 @@ export function renderLittleTask(project) {
       toggleDoneStatus(task);
       localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
     });
+    const titleBox = document.createElement("div");
+    titleBox.classList.add("title-box");
+    renderedTaskBox.appendChild(titleBox);
 
     const taskTitle = document.createElement("input");
     taskTitle.classList.add("rendered-task-title");
     taskTitle.setAttribute("readonly", "readonly");
     taskTitle.value = task.title;
-    renderedTaskBox.appendChild(taskTitle);
+    titleBox.appendChild(taskTitle);
     taskTitle.addEventListener("dblclick", () => {
       taskTitle.classList.add("editable");
       taskTitle.focus();
@@ -85,6 +88,10 @@ export function renderLittleTask(project) {
         editBtn.click();
       }
     });
+    // render notes under the taskTitle
+    const renderedNotes = document.createElement("p");
+    renderedNotes.classList.add("rendered-notes");
+    titleBox.appendChild(renderedNotes);
 
     const editBtn = document.createElement("button");
     editBtn.textContent = "edit";
@@ -130,9 +137,6 @@ export function renderLittleTask(project) {
     notesDiv.addEventListener("click", () => {
       dialog.showModal();
     });
-    const renderedNotes = document.createElement("p");
-    renderedNotes.classList.add("rendered-notes");
-    renderedTaskBox.appendChild(renderedNotes); // WHY
 
     renderNotes(task, renderedNotes); // render notes even after refresh
 
@@ -164,6 +168,6 @@ export function renderLittleTask(project) {
 }
 
 export function renderNotes(task, renderedNotes) {
-  renderedNotes.textContent = `${task.notes}`;
+  if (task.notes !== undefined) renderedNotes.textContent = `${task.notes}`;
   console.log(`${task.notes}`);
 }
