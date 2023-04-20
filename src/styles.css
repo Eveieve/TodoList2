@@ -6,6 +6,7 @@
 html, body {
   width: 100%;
   height: 100%;
+  margin: 0;
  
 }
 * {
@@ -48,7 +49,7 @@ html, body {
   }
 .rendered-div{
   display: flex;
-  /* height: 3rem; */
+  align-items: center; 
 
 }
 
@@ -62,6 +63,7 @@ html, body {
 width: 20rem;
 overflow-wrap: break-word;
 }
+.rendered-date,
 .rendered-notes{
   margin: 0;
 }

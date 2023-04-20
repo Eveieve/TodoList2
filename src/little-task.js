@@ -29,8 +29,11 @@ export function editTask(taskTitle, taskToEdit) {
 }
 
 export function addNotes(taskToNote, notesValue) {
-  //   const taskToNote = project.task.find((el) => el.id === taskID);
-  //   console.log(taskToNote);
   taskToNote.notes = notesValue;
+  localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
+}
+
+export function addDate(taskToDate, dateValue) {
+  taskToDate.dueDate = dateValue;
   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
 }

@@ -1,6 +1,6 @@
 import { addLittleTaskToProject, toggleDoneStatus } from "./little-task";
 import { projectsArr } from "./project";
-import { editTask, addNotes } from "./little-task";
+import { editTask, addNotes, addDate } from "./little-task";
 
 const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
@@ -14,19 +14,14 @@ function renderInputField(project) {
   const form = document.createElement("form");
   taskSection.appendChild(form);
 
-  const inputTitle = document.createElement("input");
-  inputTitle.classList.add("task-title");
-  form.appendChild(inputTitle);
-
-  const inputDate = document.createElement("input");
-  inputDate.setAttribute("type", "date");
-  inputDate.classList.add("task-date");
-  form.appendChild(inputDate);
-
   const addBtn = document.createElement("button");
   addBtn.classList.add("task-button");
   addBtn.textContent = "add";
   form.appendChild(addBtn);
+
+  const inputTitle = document.createElement("input");
+  inputTitle.classList.add("task-title");
+  form.appendChild(inputTitle);
 
   taskSection.appendChild(renderedTasks);
 
@@ -73,6 +68,7 @@ export function renderLittleTask(project) {
     taskTitle.setAttribute("readonly", "readonly");
     taskTitle.value = task.title;
     titleBox.appendChild(taskTitle);
+
     taskTitle.addEventListener("dblclick", () => {
       taskTitle.classList.add("editable");
       taskTitle.focus();
@@ -92,6 +88,10 @@ export function renderLittleTask(project) {
     const renderedNotes = document.createElement("p");
     renderedNotes.classList.add("rendered-notes");
     titleBox.appendChild(renderedNotes);
+
+    const renderedDate = document.createElement("p");
+    renderedDate.classList.add("rendered-date");
+    titleBox.appendChild(renderedDate);
 
     const editBtn = document.createElement("button");
     editBtn.textContent = "edit";
@@ -122,7 +122,6 @@ export function renderLittleTask(project) {
     dialog.classList.add("modal");
     document.body.appendChild(dialog);
     const notesPopup = document.createElement("div");
-    // notesPopup.classList.add("notes-popup-visible");
     dialog.appendChild(notesPopup);
     const form = document.createElement("form");
     form.classList.add("notes-form");
@@ -132,6 +131,7 @@ export function renderLittleTask(project) {
     form.appendChild(notesInput);
 
     const dateInput = document.createElement("input");
+    dateInput.classList.add("date-input");
     dateInput.setAttribute("type", "date");
     form.appendChild(dateInput);
 
@@ -144,14 +144,18 @@ export function renderLittleTask(project) {
     });
 
     renderNotes(task, renderedNotes); // render notes even after refresh
+    renderDate(task, renderedDate);
 
     notesAddBtn.addEventListener("click", (e) => {
       e.preventDefault();
       let notesValue = notesInput.value;
       addNotes(task, notesValue);
+      const dateInputValue = dateInput.value;
+      addDate(task, dateInputValue);
       console.log(task);
       dialog.close();
       renderNotes(task, renderedNotes);
+      renderDate(task, renderedDate);
     });
   };
 
@@ -165,14 +169,17 @@ export function renderLittleTask(project) {
     while (renderedTasks.firstChild) {
       renderedTasks.firstChild.remove();
     }
-
-    // loop task array in each project and render it
     project.task.forEach(render);
   }
   rerender(project);
 }
 
-export function renderNotes(task, renderedNotes) {
+function renderNotes(task, renderedNotes) {
   if (task.notes !== undefined) renderedNotes.textContent = `${task.notes}`;
   console.log(`${task.notes}`);
+}
+
+function renderDate(task, renderedDate) {
+  renderedDate.textContent = `${task.dueDate}`;
+  console.log(`${task.dueDate}`);
 }
