@@ -14,13 +14,14 @@ function renderInputField(project) {
   const form = document.createElement("form");
   taskSection.appendChild(form);
 
-  const addBtn = document.createElement("button");
-  addBtn.classList.add("task-button");
-  addBtn.textContent = "add";
+  const addBtn = document.createElement("img");
+  addBtn.classList.add("add-btn"); // same class with project add btn
+  // addBtn.textContent = "add";
   form.appendChild(addBtn);
 
   const inputTitle = document.createElement("input");
-  inputTitle.classList.add("task-title");
+  inputTitle.setAttribute("placeholder", "Add a task");
+  inputTitle.classList.add("task-input");
   form.appendChild(inputTitle);
 
   taskSection.appendChild(renderedTasks);
@@ -109,14 +110,15 @@ export function renderLittleTask(project) {
     deleteBtn.textContent = "delete";
     renderedTaskBox.appendChild(deleteBtn);
 
+    // id of current task element while looping
     const idToRemove = task.id;
 
     renderedTaskBox.addEventListener("click", (e) => {
       if (e.target.className !== "delete-btn") return;
       const taskBox = e.target.closest(".rendered-task");
       deleteLittleTask(idToRemove);
-      // rerender(project);
-      taskBox.remove();
+      rerender(project);
+      // taskBox.remove();
     });
 
     // add notes
@@ -162,6 +164,9 @@ export function renderLittleTask(project) {
       renderNotes(task, renderedNotes);
       renderDate(task, renderedDate);
     });
+
+    renderNotes(task, renderedNotes); // render notes even after refresh
+    renderDate(task, renderedDate);
   };
 
   function deleteLittleTask(taskID) {
@@ -177,17 +182,12 @@ export function renderLittleTask(project) {
     project.task.forEach(render);
   }
   rerender(project);
-
-  //   renderNotes(task, renderedNotes); // render notes even after refresh
-  // renderDate(task, renderedDate);
 }
 
 function renderNotes(task, renderedNotes) {
   if (task.notes !== "") renderedNotes.textContent = `${task.notes}`;
-  console.log(`${task.notes}`);
 }
 
 function renderDate(task, renderedDate) {
   if (task.dueDate !== "") renderedDate.textContent = `${task.dueDate}`;
-  console.log(`${task.dueDate}`);
 }

@@ -9,10 +9,10 @@ html, body {
   margin: 0;
  
 }
-* {
+/* * {
   border: 2px solid salmon;
 
-}
+} */
 .main-container {
     min-width: 10rem;
     background-color: rgb(255, 255, 255);
@@ -31,6 +31,7 @@ html, body {
   
   .project-form {
     display: flex;
+    gap:.5rem;
   }
 
 .rendered-projects,
@@ -52,6 +53,7 @@ html, body {
   display: flex;
   align-items: center; 
   width: 20rem;
+ 
 }
 
   /* both rendered tasks & projects style */
@@ -74,9 +76,30 @@ input:focus {
   outline-style: none;
   /* border: 2px solid rgb(124, 164, 250); */
 }
-
+input.project-title{
+  border-style: none;
+ 
+}
+input.project-title:hover::placeholder  {
+  color: var(--blue);
+}
+.task-input:hover::placeholder {
+  color: var(--blue);
+}
+.task-input {
+  border-style: none;
+}
+.add-btn {
+  width: 2.5rem;
+  background-image: url("svg/plus.svg");
+  border-style: none;
+  filter: invert(45%) sepia(63%) saturate(879%) hue-rotate(193deg) brightness(95%) contrast(90%);
+}
+.add-btn:hover {
+  background-image: url("svg/plus-circle.svg");
+}
 .editable:focus {
-  border: 2px solid rgb(124, 164, 250);
+  border: 1px solid rgb(124, 164, 250);
  
 }
 
@@ -85,11 +108,9 @@ input {
 }
 
 input[type="checkbox"]{
-width: 1rem;
+width: 2rem;
 accent-color: var(--blue);
-/* border-radius: 1rem; */
- 
-/* zoom: 110%; */
+
 }
 input[type="checkbox"]:hover{
   zoom: 120%;
