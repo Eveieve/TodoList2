@@ -29,7 +29,7 @@ function renderInputField(project) {
     e.preventDefault();
     if (inputTitle.value !== "") {
       addLittleTaskToProject(project);
-      renderLittleTask(project);
+      renderLittleTask(project); // rerenders..
     }
     inputTitle.value = "";
   });
@@ -44,6 +44,7 @@ export function rerenderInputField(project) {
 
 // pull out project.task array from each project
 export function renderLittleTask(project) {
+  // looping through taskArray, call render() on each element
   const render = (task) => {
     const renderedTaskBox = document.createElement("div");
     renderedTaskBox.classList.add("rendered-task");
@@ -102,10 +103,6 @@ export function renderLittleTask(project) {
       editTask(taskTitle, task);
       rerender(project);
     });
-
-    // use event delegation
-    // on the entire renderedTasks,
-
     ///////////////////////
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
@@ -113,20 +110,15 @@ export function renderLittleTask(project) {
     renderedTaskBox.appendChild(deleteBtn);
 
     const idToRemove = task.id;
-    // instead of this i can have a handler on the renderedTasks only,
-    // not adding handlers to each delete button?
-    renderedTasks.addEventListener("click", (e) => {
+
+    renderedTaskBox.addEventListener("click", (e) => {
       if (e.target.className !== "delete-btn") return;
       const taskBox = e.target.closest(".rendered-task");
       deleteLittleTask(idToRemove);
-      // rerender(project) // instead of rerendering i can just remove()?
+      // rerender(project);
       taskBox.remove();
     });
-    // deleteBtn.addEventListener("click", () => {
-    //   deleteLittleTask(idToRemove);
-    //   rerender(project);
-    // });
-    ///////////////////////////////
+
     // add notes
     const notesDiv = document.createElement("div");
     notesDiv.textContent = "details"; // change to note svg later
@@ -159,9 +151,6 @@ export function renderLittleTask(project) {
       dialog.showModal();
     });
 
-    renderNotes(task, renderedNotes); // render notes even after refresh
-    renderDate(task, renderedDate);
-
     notesAddBtn.addEventListener("click", (e) => {
       e.preventDefault();
       let notesValue = notesInput.value;
@@ -188,6 +177,9 @@ export function renderLittleTask(project) {
     project.task.forEach(render);
   }
   rerender(project);
+
+  //   renderNotes(task, renderedNotes); // render notes even after refresh
+  // renderDate(task, renderedDate);
 }
 
 function renderNotes(task, renderedNotes) {
