@@ -14,9 +14,9 @@ function renderInputField(project) {
   const form = document.createElement("form");
   taskSection.appendChild(form);
 
-  const addBtn = document.createElement("img");
-  addBtn.classList.add("add-btn"); // same class with project add btn
-  // addBtn.textContent = "add";
+  const addBtn = document.createElement("button");
+  addBtn.classList.add("task-title"); // same class with project add btn
+  addBtn.textContent = "add";
   form.appendChild(addBtn);
 
   const inputTitle = document.createElement("input");
@@ -107,7 +107,8 @@ export function renderLittleTask(project) {
     ///////////////////////
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
-    deleteBtn.textContent = "delete";
+    // deleteBtn.setAttribute("src", "svg/delete-outline.svg");
+    // deleteBtn.textContent = "delete";
     renderedTaskBox.appendChild(deleteBtn);
 
     // id of current task element while looping

@@ -9,7 +9,7 @@ export class Task extends Project {
 }
 
 export function addLittleTaskToProject(projectToAddTask) {
-  const littleTaskTitle = document.querySelector(".task-title").value;
+  const littleTaskTitle = document.querySelector(".task-input").value;
   const littleTask = new Task(littleTaskTitle);
   console.log(projectsArr);
   projectToAddTask.task.push(littleTask);

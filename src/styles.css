@@ -2,6 +2,7 @@
   --blue: rgb(83, 127, 231);
   --skyblue: rgb(192, 238, 242);
   --light-blue: rgb(192, 238, 242);
+  --grey: rgb(95, 99, 104)
 }
 html, body {
   width: 100%;
@@ -50,6 +51,7 @@ html, body {
   }
 .rendered-task,
 .rendered-project{
+  
   display: flex;
   align-items: center; 
   width: 20rem;
@@ -59,6 +61,7 @@ html, body {
   /* both rendered tasks & projects style */
   .rendered-project-title,
   .rendered-task-title {
+    font-size: 1rem;
    border-style: none;
   width: 20rem;
   }
@@ -71,6 +74,10 @@ overflow-wrap: break-word;
 .rendered-date,
 .rendered-notes{
   margin: 0;
+
+}
+.rendered-notes{
+  color: var(--grey);
 }
 input:focus {
   outline-style: none;
@@ -87,16 +94,18 @@ input.project-title:hover::placeholder  {
   color: var(--blue);
 }
 .task-input {
-  border-style: none;
+  border: 2px solid transparent;
 }
 .add-btn {
   width: 2.5rem;
   background-image: url("svg/plus.svg");
+  background-repeat: no-repeat;
   border-style: none;
   filter: invert(45%) sepia(63%) saturate(879%) hue-rotate(193deg) brightness(95%) contrast(90%);
 }
 .add-btn:hover {
   background-image: url("svg/plus-circle.svg");
+  background-repeat: no-repeat;
 }
 .editable:focus {
   border: 1px solid rgb(124, 164, 250);
@@ -122,4 +131,10 @@ input[type="checkbox"]:hover{
 
 .edit-btn {
   display: none;
+}
+.delete-btn {
+  background-image: url("svg/delete-outline.svg");
+  background-repeat: no-repeat;
+  min-width: 1rem;
+  min-height: 1rem;
 }
