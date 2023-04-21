@@ -47,18 +47,21 @@ html, body {
    height: 100%;
    
   }
-.rendered-div{
+.rendered-task,
+.rendered-project{
   display: flex;
   align-items: center; 
-
+  width: 20rem;
 }
 
   /* both rendered tasks & projects style */
   .rendered-project-title,
   .rendered-task-title {
    border-style: none;
-   /* height: 3rem; */
+  width: 20rem;
   }
+  
+  /* task box containing title&notes&date */
 .title-box{
 width: 20rem;
 overflow-wrap: break-word;
@@ -82,10 +85,15 @@ input {
 }
 
 input[type="checkbox"]{
-width: 4em;
+width: 1rem;
 accent-color: var(--blue);
+/* border-radius: 1rem; */
+ 
+/* zoom: 110%; */
 }
-
+input[type="checkbox"]:hover{
+  zoom: 120%;
+}
 .modal{
   width: 12rem;
   height: 10rem;

@@ -46,7 +46,7 @@ export function rerenderInputField(project) {
 export function renderLittleTask(project) {
   const render = (task) => {
     const renderedTaskBox = document.createElement("div");
-    renderedTaskBox.classList.add("rendered-div");
+    renderedTaskBox.classList.add("rendered-task");
     renderedTaskBox.setAttribute("id", `${task.id}`);
     renderedTasks.prepend(renderedTaskBox);
 
@@ -103,20 +103,33 @@ export function renderLittleTask(project) {
       rerender(project);
     });
 
+    // use event delegation
+    // on the entire renderedTasks,
+
+    ///////////////////////
     const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("delete-btn");
     deleteBtn.textContent = "delete";
     renderedTaskBox.appendChild(deleteBtn);
 
     const idToRemove = task.id;
-
-    deleteBtn.addEventListener("click", () => {
+    // instead of this i can have a handler on the renderedTasks only,
+    // not adding handlers to each delete button?
+    renderedTasks.addEventListener("click", (e) => {
+      if (e.target.className !== "delete-btn") return;
+      const taskBox = e.target.closest(".rendered-task");
       deleteLittleTask(idToRemove);
-      rerender(project);
+      // rerender(project) // instead of rerendering i can just remove()?
+      taskBox.remove();
     });
-
+    // deleteBtn.addEventListener("click", () => {
+    //   deleteLittleTask(idToRemove);
+    //   rerender(project);
+    // });
+    ///////////////////////////////
     // add notes
     const notesDiv = document.createElement("div");
-    notesDiv.textContent = "notes"; // change to note svg later
+    notesDiv.textContent = "details"; // change to note svg later
     notesDiv.classList.add("notes-div");
     renderedTaskBox.appendChild(notesDiv);
     const dialog = document.createElement("dialog");
@@ -178,11 +191,11 @@ export function renderLittleTask(project) {
 }
 
 function renderNotes(task, renderedNotes) {
-  if (task.notes !== undefined) renderedNotes.textContent = `${task.notes}`;
+  if (task.notes !== "") renderedNotes.textContent = `${task.notes}`;
   console.log(`${task.notes}`);
 }
 
 function renderDate(task, renderedDate) {
-  if (task.dueDate !== undefined) renderedDate.textContent = `${task.dueDate}`;
+  if (task.dueDate !== "") renderedDate.textContent = `${task.dueDate}`;
   console.log(`${task.dueDate}`);
 }

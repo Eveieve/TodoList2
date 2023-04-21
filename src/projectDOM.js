@@ -12,7 +12,7 @@ projectSection.appendChild(renderedProjects);
 export function renderProject(proj) {
   // renderedDiv to contain rendered project box
   const renderedDiv = document.createElement("div");
-  renderedDiv.classList.add("rendered-div");
+  renderedDiv.classList.add("rendered-project");
   renderedProjects.prepend(renderedDiv);
 
   const doneStatus = document.createElement("input");
