@@ -10,24 +10,40 @@ html, body {
   margin: 0;
  
 }
-/* * {
-  border: 2px solid salmon;
-
-} */
+* {
+ box-sizing: border-box;
+/* border: 1px solid salmon; */
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .main-container {
-    min-width: 10rem;
+    width: 70rem;
     background-color: rgb(255, 255, 255);
-    height: 30rem;
+    height:45rem;
+    border-radius: 1rem;
+    padding: 1.5rem;
+   
+box-shadow: rgba(169, 174, 183, 0.5) 1px 1px 2px 2px;
+
   }
   h1 {
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     color: var(--blue);
   }
   .project-section {
+    /* overflow: scroll; */
     background-color:white;
-    height: 100%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   padding: 1rem;
   }
   
   .project-form {
@@ -45,19 +61,29 @@ html, body {
   .sec-container {
     background-color: white;
     display: grid;
-    grid-template-columns: 1fr 3fr;
-   height: 100%;
+    grid-template-columns: 1fr 4fr;
+    gap: 1rem;
+   /* height: 100%; */
    
   }
 .rendered-task,
 .rendered-project{
-  
-  display: flex;
-  align-items: center; 
-  width: 20rem;
  
+  display: flex;
+  align-items: center;
+  
+  width: 23rem;
+  height: min-content;
+  border-radius: .3rem;
+  padding: .3rem;
+ gap: .5rem;
 }
 
+.rendered-task:hover,
+.rendered-project:hover{
+/* box-shadow: 1px .1px 1px 2px rgb(199, 199, 199); */
+box-shadow: rgba(169, 174, 183, 0.5) 0px 1px 2px 0px;
+}
   /* both rendered tasks & projects style */
   .rendered-project-title,
   .rendered-task-title {
@@ -65,10 +91,16 @@ html, body {
    border-style: none;
   width: 20rem;
   }
-  
+  .task-section{
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+  }
   /* task box containing title&notes&date */
 .title-box{
-width: 20rem;
+width: 15rem;
 overflow-wrap: break-word;
 }
 .rendered-date,
@@ -78,6 +110,10 @@ overflow-wrap: break-word;
 }
 .rendered-notes{
   color: var(--grey);
+}
+.rendered-date {
+  color: var(--grey);
+  font-size: .8rem;
 }
 input:focus {
   outline-style: none;
@@ -109,7 +145,7 @@ input.project-title:hover::placeholder  {
 }
 .editable:focus {
   border: 1px solid rgb(124, 164, 250);
- 
+ border-radius: .2rem;
 }
 
 input {
@@ -119,12 +155,14 @@ input {
 input[type="checkbox"]{
 width: 2rem;
 accent-color: var(--blue);
+padding: .3rem;
 
 }
 input[type="checkbox"]:hover{
   zoom: 120%;
 }
 .modal{
+  box-sizing: content-box; 
   width: 12rem;
   height: 10rem;
  }
@@ -132,7 +170,7 @@ input[type="checkbox"]:hover{
 .edit-btn {
   display: none;
 }
-.delete-btn {
+.delete-btn{
   background-image: url("svg/delete-outline.svg");
   background-repeat: no-repeat;
   min-width: 1rem;

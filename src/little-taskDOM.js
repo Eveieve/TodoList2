@@ -105,7 +105,7 @@ export function renderLittleTask(project) {
       rerender(project);
     });
     ///////////////////////
-    const deleteBtn = document.createElement("button");
+    const deleteBtn = document.createElement("img");
     deleteBtn.classList.add("delete-btn");
     // deleteBtn.setAttribute("src", "svg/delete-outline.svg");
     // deleteBtn.textContent = "delete";
