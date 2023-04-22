@@ -54,7 +54,9 @@ export function renderLittleTask(project) {
 
     const doneStatus = document.createElement("input");
     doneStatus.setAttribute("type", "checkbox");
-    if (task.doneStatus) doneStatus.setAttribute("checked", "checked");
+    if (task.doneStatus) {
+      doneStatus.setAttribute("checked", "checked");
+    }
     renderedTaskBox.appendChild(doneStatus);
 
     doneStatus.addEventListener("click", () => {
