@@ -78,9 +78,6 @@ export function renderLittleTask(project) {
       taskTitle.focus();
       taskTitle.readOnly = false;
     });
-    taskTitle.addEventListener("click", () => {
-      doneStatus.click();
-    });
 
     taskTitle.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {

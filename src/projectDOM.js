@@ -35,13 +35,25 @@ export function renderProject(proj) {
     projectTitle.readOnly = false;
   });
 
-  renderedDiv.addEventListener("click", () => {
-    rerenderInputField(proj);
-    renderLittleTask(proj);
+  renderedDiv.addEventListener("click", (e) => {
+    // if what's clicked is what has the handler
+    if (e.target == e.currentTarget) {
+      rerenderInputField(proj);
+      renderLittleTask(proj);
+    } else if (e.target.className === "rendered-project-title") {
+      rerenderInputField(proj);
+      renderLittleTask(proj);
+    }
   });
-
   const editBtn = document.createElement("button");
+  editBtn.classList.add("project-edit-btn");
   editBtn.textContent = "edit";
+
+  // renderedDiv.addEventListener("click", (e) => {
+  //   if (e.target.className !== "project-edit-btn") return;
+  //   editProject(projectTitle, proj);
+  //   rerenderProjectArr();
+  // });
 
   editBtn.addEventListener("click", () => {
     editProject(projectTitle, proj);

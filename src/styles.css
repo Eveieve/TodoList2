@@ -36,6 +36,9 @@ box-shadow: rgba(169, 174, 183, 0.5) 1px 1px 2px 2px;
     align-items: center;
     color: var(--blue);
   }
+  h1:hover{
+    zoom: 120%;
+  }
   .project-section {
     /* overflow: scroll; */
     background-color:white;
