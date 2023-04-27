@@ -203,8 +203,11 @@ textarea:focus{
   display: none;
 }
 .delete-btn{
-  /* background-image: url("svg/delete-outline.svg"); */
-  background-repeat: no-repeat;
-  min-width: 1rem;
-  min-height: 1rem;
+height: 17px;
+width: 17px;
+}
+
+.notes-div {
+  height: 16px;
+  width: 16px;
 }
