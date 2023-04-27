@@ -134,15 +134,17 @@ overflow-wrap: break-word;
   color: var(--grey);
   font-size: .8rem;
 }
+
 input:focus {
   outline-style: none;
   /* border: 2px solid rgb(124, 164, 250); */
 }
 input.project-title{
+  width: 100%;
   border-style: none;
-  /* background-color: var(--light-grey); */
  border-radius: .5rem;
- padding: .3rem;
+ padding: .7rem;
+
 }
 input.project-title:hover,
 input.project-title:focus {
@@ -157,7 +159,8 @@ input.project-title:hover::placeholder  {
 .task-input {
   border: 2px solid transparent;
  border-radius: .5rem;
- padding: .3rem;
+ padding: .7rem;
+ width: 70%;
 }
 .task-input:hover,
 .task-input:focus {
