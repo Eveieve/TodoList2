@@ -122,8 +122,7 @@ export function renderLittleTask(project) {
 
     // add notes
     const notesDiv = document.createElement("img");
-    // notesDiv.textContent = "details"; // change to note svg later
-    notesDiv.src = noteEditOutline;
+    notesDiv.src = noteEditOutline; // svg
     notesDiv.classList.add("notes-div");
     renderedTaskBox.appendChild(notesDiv);
     const dialog = document.createElement("dialog");

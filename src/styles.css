@@ -21,12 +21,13 @@ body {
   align-items: center;
 }
 .main-container {
+  display: flex;
+  flex-direction: column;
     width: 70rem;
     background-color: rgb(255, 255, 255);
     height:45rem;
     border-radius: 1rem;
     padding: 1.5rem;
-   
 box-shadow: rgba(169, 174, 183, 0.5) 1px 1px 2px 2px;
 
   }
@@ -125,9 +126,11 @@ overflow-wrap: break-word;
 .rendered-date,
 .rendered-notes{
   margin: 0;
-
 }
 .rendered-notes{
+  overflow:hidden;
+  white-space: nowrap;
+ text-overflow: ellipsis; 
   color: var(--grey);
 }
 .rendered-date {
