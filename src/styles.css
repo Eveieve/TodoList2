@@ -128,9 +128,13 @@ input:focus {
 }
 input.project-title{
   border-style: none;
-  background-color: var(--light-grey);
+  /* background-color: var(--light-grey); */
  border-radius: .5rem;
  padding: .3rem;
+}
+input.project-title:hover,
+input.project-title:focus {
+  background-color: var(--light-grey);
 }
 input.project-title:hover::placeholder  {
   color: var(--blue);
@@ -140,10 +144,12 @@ input.project-title:hover::placeholder  {
 }
 .task-input {
   border: 2px solid transparent;
-  /* border-style: none; */
-  background-color: var(--light-grey);
  border-radius: .5rem;
  padding: .3rem;
+}
+.task-input:hover,
+.task-input:focus {
+  background-color: var(--light-grey);
 }
 .add-btn {
   width: 2.5rem;

@@ -14,11 +14,6 @@ function renderInputField(project) {
   const form = document.createElement("form");
   taskSection.appendChild(form);
 
-  const addBtn = document.createElement("button");
-  addBtn.classList.add("task-title"); // same class with project add btn
-  addBtn.textContent = "add";
-  form.appendChild(addBtn);
-
   const inputTitle = document.createElement("input");
   inputTitle.setAttribute("placeholder", "Add a task");
   inputTitle.classList.add("task-input");
@@ -26,13 +21,16 @@ function renderInputField(project) {
 
   taskSection.appendChild(renderedTasks);
 
-  addBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (inputTitle.value !== "") {
+  form.addEventListener("keypress", (e) => {
+    if (
+      e.target.className === "task-input" &&
+      (e.key === "Enter") & (inputTitle.value !== "")
+    ) {
+      e.preventDefault();
       addLittleTaskToProject(project);
-      renderLittleTask(project); // rerenders..
+      renderLittleTask(project);
+      inputTitle.value = "";
     }
-    inputTitle.value = "";
   });
 }
 
