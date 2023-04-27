@@ -1,6 +1,9 @@
 import { projectsArr, deleteProject, editProject } from "./project";
 import { rerenderInputField, renderLittleTask } from "./little-taskDOM";
 
+import deleteSvg from "./svg/delete-outline.svg";
+import noteEditOutline from "./svg/note-edit-outline.svg";
+
 const projectSection = document.querySelector(".project-section");
 const renderedProjects = document.querySelector(".rendered-projects");
 
@@ -45,26 +48,19 @@ export function renderProject(proj) {
       renderLittleTask(proj);
     }
   });
-  const editBtn = document.createElement("button");
-  editBtn.classList.add("project-edit-btn");
-  editBtn.textContent = "edit";
-
-  editBtn.addEventListener("click", () => {
-    editProject(projectTitle, proj);
-    rerenderProjectArr();
-  });
 
   projectTitle.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      editBtn.click();
+      // editBtn.click();
+      editProject(projectTitle, proj);
+      rerenderProjectArr();
     }
   });
 
-  renderedDiv.appendChild(editBtn);
-
-  const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "delete";
+  const deleteBtn = document.createElement("img");
+  deleteBtn.classList.add("delete-btn");
+  deleteBtn.src = deleteSvg;
   renderedDiv.appendChild(deleteBtn);
 
   doneStatus.addEventListener("click", (e) => {
