@@ -2,7 +2,8 @@
   --blue: rgb(83, 127, 231);
   --skyblue: rgb(192, 238, 242);
   --light-blue: rgb(192, 238, 242);
-  --grey: rgb(95, 99, 104)
+  --grey: rgb(95, 99, 104);
+  --light-grey: rgba(169, 174, 183, 0.5);
 }
 html, body {
   width: 100%;
@@ -32,7 +33,7 @@ box-shadow: rgba(169, 174, 183, 0.5) 1px 1px 2px 2px;
   h1 {
     margin: 0;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     color: var(--blue);
   }
@@ -127,7 +128,9 @@ input:focus {
 }
 input.project-title{
   border-style: none;
- 
+  background-color: var(--light-grey);
+ border-radius: .5rem;
+ padding: .3rem;
 }
 input.project-title:hover::placeholder  {
   color: var(--blue);
@@ -137,6 +140,10 @@ input.project-title:hover::placeholder  {
 }
 .task-input {
   border: 2px solid transparent;
+  /* border-style: none; */
+  background-color: var(--light-grey);
+ border-radius: .5rem;
+ padding: .3rem;
 }
 .add-btn {
   width: 2.5rem;
@@ -154,9 +161,9 @@ input.project-title:hover::placeholder  {
  border-radius: .2rem;
 }
 
-input {
+/* input {
   cursor: pointer;
-}
+} */
 
 input[type="checkbox"]{
 width: 2rem;

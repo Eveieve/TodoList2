@@ -18,8 +18,8 @@ export const projectsArr =
 
 export function addProject() {
   const projectTitle = document.querySelector(".project-title").value;
-  const projectDate = document.querySelector(".project-date").value;
-  const project = new Project(projectTitle, projectDate);
+  // const projectDate = document.querySelector(".project-date").value;
+  const project = new Project(projectTitle);
 
   projectsArr.push(project);
   console.log(project);
