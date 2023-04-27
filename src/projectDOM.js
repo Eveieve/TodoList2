@@ -18,11 +18,11 @@ export function renderProject(proj) {
   renderedDiv.classList.add("rendered-project");
   renderedProjects.prepend(renderedDiv);
 
-  const doneStatus = document.createElement("input");
-  doneStatus.setAttribute("type", "checkbox");
-  if (proj.doneStatus) doneStatus.setAttribute("checked", "checked");
+  // const doneStatus = document.createElement("input");
+  // doneStatus.setAttribute("type", "checkbox");
+  // if (proj.doneStatus) doneStatus.setAttribute("checked", "checked");
 
-  renderedDiv.appendChild(doneStatus);
+  // renderedDiv.appendChild(doneStatus);
 
   renderedDiv.classList.add("project-rendered");
   renderedDiv.setAttribute("id", `${proj.id}`);
@@ -63,11 +63,11 @@ export function renderProject(proj) {
   deleteBtn.src = deleteSvg;
   renderedDiv.appendChild(deleteBtn);
 
-  doneStatus.addEventListener("click", (e) => {
-    e.stopPropagation();
-    proj.toggleDoneStatus();
-    localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
-  });
+  // doneStatus.addEventListener("click", (e) => {
+  //   e.stopPropagation();
+  //   proj.toggleDoneStatus();
+  //   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
+  // });
 
   const idToRemove = proj.id;
 
