@@ -1,6 +1,7 @@
 import { addLittleTaskToProject, toggleDoneStatus } from "./little-task";
 import { projectsArr } from "./project";
 import { editTask, addNotes, addDate } from "./little-task";
+import DeleteSvg from "./svg/delete-outline.svg";
 
 const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
@@ -104,8 +105,7 @@ export function renderLittleTask(project) {
     ///////////////////////
     const deleteBtn = document.createElement("img");
     deleteBtn.classList.add("delete-btn");
-    // deleteBtn.setAttribute("src", "svg/delete-outline.svg");
-    // deleteBtn.textContent = "delete";
+    deleteBtn.src = DeleteSvg;
     renderedTaskBox.appendChild(deleteBtn);
 
     // id of current task element while looping
@@ -144,7 +144,7 @@ export function renderLittleTask(project) {
     form.appendChild(dateInput);
 
     const notesAddBtn = document.createElement("button");
-    notesAddBtn.textContent = "confirm";
+    notesAddBtn.textContent = "save";
     form.appendChild(notesAddBtn);
 
     notesDiv.addEventListener("click", () => {
