@@ -85,17 +85,27 @@ box-shadow: rgba(169, 174, 183, 0.5) 1px 1px 2px 2px;
 .checkbox-checked{
   text-decoration: line-through;
 }
+
+
 .rendered-task:hover,
 .rendered-project:hover{
-/* box-shadow: 1px .1px 1px 2px rgb(199, 199, 199); */
 box-shadow: rgba(169, 174, 183, 0.5) 0px 1px 2px 0px;
+/* background-color: var(--light-grey); */
+}
+
+
+.rendered-task:hover img {
+/* background-color: var(--light-grey); */
+opacity: .6;
+  
 }
   /* both rendered tasks & projects style */
   .rendered-project-title,
   .rendered-task-title {
     font-size: 1rem;
    border-style: none;
-  width: 20rem;
+  width: 100%;
+
   }
   .task-section{
     padding: .5rem;
@@ -104,7 +114,7 @@ box-shadow: rgba(169, 174, 183, 0.5) 0px 1px 2px 0px;
     gap: 1rem;
 
   }
- 
+
   /* task box containing title&notes&date */
 .title-box{
 width: 15rem;
@@ -203,11 +213,24 @@ textarea:focus{
   display: none;
 }
 .delete-btn{
-height: 17px;
-width: 17px;
+
+height: 20px;
+width: 20px;
+opacity: 0;
+border-radius: 2px;
 }
 
+.delete-btn:hover {
+  background-color: var(--light-grey);
+  }
+  
 .notes-div {
-  height: 16px;
-  width: 16px;
+  height: 19px;
+  width: 19px;
+  opacity: 0;
+  border-radius: 2px;
+}
+.notes-div:hover {
+  background-color: var(--light-grey);
+
 }
