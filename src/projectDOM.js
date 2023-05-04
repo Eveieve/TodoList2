@@ -8,7 +8,7 @@ const projectSection = document.querySelector(".project-section");
 const renderedProjects = document.querySelector(".rendered-projects");
 
 const projectForm = document.querySelector(".project-form");
-
+const taskSection = document.querySelector(".task-section");
 projectSection.appendChild(projectForm);
 projectSection.appendChild(renderedProjects);
 

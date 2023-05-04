@@ -4,6 +4,7 @@
   --light-blue: rgb(192, 238, 242);
   --grey: rgb(95, 99, 104);
   --light-grey: rgba(169, 174, 183, 0.5);
+  --background:rgb(246, 248, 249);
 }
 html, body {
   width: 100%;
@@ -21,6 +22,7 @@ body {
   align-items: center;
 }
 .main-container {
+  background-color: var(--background);
   display: flex;
   flex-direction: column;
     width: 70rem;
@@ -71,17 +73,18 @@ box-shadow: rgba(169, 174, 183, 0.5) 1px 1px 2px 2px;
    /* height: 100%; */
    
   }
+/* each task and project */
 .rendered-task,
 .rendered-project{
- 
   display: flex;
+  width: 100%;
   align-items: center;
-  
   width: 23rem;
   height: min-content;
   border-radius: .3rem;
   padding: .3rem;
  gap: .5rem;
+ /* cursor: pointer; */
 }
 .checkbox-checked{
   text-decoration: line-through;
@@ -185,9 +188,9 @@ input.project-title:hover::placeholder  {
  border-radius: .2rem;
 }
 
-/* input {
+input {
   cursor: pointer;
-} */
+}
 
 input[type="checkbox"]{
 width: 2rem;
