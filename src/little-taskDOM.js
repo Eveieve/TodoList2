@@ -188,5 +188,5 @@ function renderNotes(task, renderedNotes) {
 }
 
 function renderDate(task, renderedDate) {
-  if (task.dueDate !== "") renderedDate.textContent = `${task.dueDate}`;
+  if (task.dueDate !== "") renderedDate.textContent = `${task.dueDate}`; // yyyy-mm-dd
 }
