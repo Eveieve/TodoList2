@@ -1,5 +1,6 @@
 # Do-that-thing (Todo-list)
-This project is part of The Odin Project in the full stack javaScript path. See here for the project specs. 
+This project is part of The Odin Project in the full stack javaScript path. 
+See [here](https://eveieve.github.io/TodoList2/) for the live preview. 
 
 ## technologies 
 javaScript, HTML, CSS 
