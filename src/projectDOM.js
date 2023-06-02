@@ -1,4 +1,4 @@
-import { projectsArr, deleteProject, editProject } from "./project";
+import { project, projectsArr, deleteProject, editProject } from "./project";
 import { rerenderInputField, renderLittleTask } from "./little-taskDOM";
 
 import deleteSvg from "./svg/delete-outline.svg";
