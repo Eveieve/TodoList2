@@ -8,8 +8,10 @@ const taskSection = document.querySelector(".task-section");
 const renderedTasks = document.createElement("div");
 renderedTasks.classList.add("rendered-tasks");
 
-function renderInputField(project) {
+export function renderInputField(project) {
+  // header of task section
   const projectTitle = document.createElement("h2");
+  projectTitle.classList.add("proj-title");
   projectTitle.textContent = project.title;
   taskSection.appendChild(projectTitle);
 

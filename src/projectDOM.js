@@ -38,7 +38,8 @@ export function renderProject(proj) {
   projectTitle.classList.add("rendered-project-title", "rendered-title");
   renderedDiv.appendChild(projectTitle);
 
-  projectTitle.addEventListener("dblclick", () => {
+  // make the task section's title change too when edit happens
+  projectTitle.addEventListener("dblclick", (e) => {
     projectTitle.classList.add("editable");
     projectTitle.focus();
     projectTitle.readOnly = false;
@@ -61,6 +62,8 @@ export function renderProject(proj) {
       // editBtn.click();
       projectObj.edit(projectTitle, proj);
       rerenderProjectArr();
+      // rerender the header(is included in InputField) once updated
+      rerenderInputField(proj);
     }
   });
 
