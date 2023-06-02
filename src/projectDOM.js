@@ -1,4 +1,4 @@
-import { project, projectsArr, deleteProject, editProject } from "./project";
+import { projectObj, projectsArr, editProject } from "./project";
 import { rerenderInputField, renderLittleTask } from "./little-taskDOM";
 
 import deleteSvg from "./svg/delete-outline.svg";
@@ -72,7 +72,7 @@ export function renderProject(proj) {
   const idToRemove = proj.id;
 
   deleteBtn.addEventListener("click", () => {
-    deleteProject(idToRemove);
+    projectObj.remove(idToRemove);
     rerenderProjectArr();
   });
 }

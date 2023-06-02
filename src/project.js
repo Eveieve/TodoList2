@@ -10,7 +10,7 @@ export class Project {
     this.doneStatus = !this.doneStatus;
   }
 }
-export function project() {
+function project() {
   const add = () => {
     const projectTitle = document.querySelector(".project-title").value;
     // const projectDate = document.querySelector(".project-date").value;
@@ -20,18 +20,21 @@ export function project() {
     console.log(project);
     localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
   };
-  return { add };
+
+  const remove = (ID) => {
+    const indexToRemove = projectsArr.findIndex((proj) => proj.id === ID);
+    projectsArr.splice(indexToRemove, 1);
+    localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
+  };
+  return { add, remove };
 }
+
+export const projectObj = project();
+
 export const projectsArr =
   JSON.parse(localStorage.getItem("storageProjectsArr"))?.map((obj) =>
     Object.assign(new Project(), obj)
   ) ?? [];
-
-export function deleteProject(ID) {
-  const indexToRemove = projectsArr.findIndex((proj) => proj.id === ID);
-  projectsArr.splice(indexToRemove, 1);
-  localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
-}
 
 export function editProject(projectTitle, projectToEdit) {
   projectToEdit.title = projectTitle.value;
