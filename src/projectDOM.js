@@ -1,4 +1,4 @@
-import { projectObj, projectsArr, editProject } from "./project";
+import { projectObj, projectsArr, projectObj.edit } from "./project";
 import { rerenderInputField, renderLittleTask } from "./little-taskDOM";
 
 import deleteSvg from "./svg/delete-outline.svg";
@@ -53,7 +53,7 @@ export function renderProject(proj) {
     if (e.key === "Enter") {
       e.preventDefault();
       // editBtn.click();
-      editProject(projectTitle, proj);
+      projectObj.edit(projectTitle, proj);
       rerenderProjectArr();
     }
   });

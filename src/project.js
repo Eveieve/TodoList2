@@ -26,7 +26,11 @@ function project() {
     projectsArr.splice(indexToRemove, 1);
     localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
   };
-  return { add, remove };
+  const edit = (projectTitle, projectToEdit) => {
+    projectToEdit.title = projectTitle.value;
+    localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
+  };
+  return { add, remove, edit };
 }
 
 export const projectObj = project();
@@ -35,8 +39,3 @@ export const projectsArr =
   JSON.parse(localStorage.getItem("storageProjectsArr"))?.map((obj) =>
     Object.assign(new Project(), obj)
   ) ?? [];
-
-export function editProject(projectTitle, projectToEdit) {
-  projectToEdit.title = projectTitle.value;
-  localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
-}
