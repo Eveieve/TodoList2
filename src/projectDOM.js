@@ -1,4 +1,4 @@
-import { projectObj, projectsArr, projectObj.edit } from "./project";
+import { projectObj, projectsArr, projectObj } from "./project";
 import { rerenderInputField, renderLittleTask } from "./little-taskDOM";
 
 import deleteSvg from "./svg/delete-outline.svg";
@@ -63,17 +63,12 @@ export function renderProject(proj) {
   deleteBtn.src = deleteSvg;
   renderedDiv.appendChild(deleteBtn);
 
-  // doneStatus.addEventListener("click", (e) => {
-  //   e.stopPropagation();
-  //   proj.toggleDoneStatus();
-  //   localStorage.setItem("storageProjectsArr", JSON.stringify(projectsArr));
-  // });
-
   const idToRemove = proj.id;
 
   deleteBtn.addEventListener("click", () => {
     projectObj.remove(idToRemove);
     rerenderProjectArr();
+    // also, remove the task Section (on the right)
   });
 }
 
