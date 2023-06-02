@@ -7,8 +7,9 @@ javaScript, HTML, CSS
 
 # features
 
-* add projects and delete them 
+* add projects with `Enter` and delete them with clicking delete buttons
 * add tasks inside projects and delete them 
+* edit each project & task title by double clicking
 * expand a single task to write notes or set a due date 
 * checkmark completed tasks 
 * use local storage to persist data on the computer 
@@ -16,6 +17,7 @@ javaScript, HTML, CSS
 # for improvement 
 
 - [ ] sort tasks in an ascending order, if due date has been set 
+- [ ] if no project present, set a 'no project' default page on load 
 
 ## bugs to work on 
 
