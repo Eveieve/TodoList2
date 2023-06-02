@@ -1,4 +1,4 @@
-import { projectObj, projectsArr, projectObj } from "./project";
+import { projectObj, projectsArr } from "./project";
 import { rerenderInputField, renderLittleTask } from "./little-taskDOM";
 
 import deleteSvg from "./svg/delete-outline.svg";
@@ -14,6 +14,12 @@ projectSection.appendChild(renderedProjects);
 
 export function renderProject(proj) {
   // renderedDiv to contain rendered project box
+
+  //   const domMaker = (tag, domName, class) => {
+  // const name = document.createElement('tag');
+  // domName.classList.add("class");
+
+  //   }
   const renderedDiv = document.createElement("div");
   renderedDiv.classList.add("rendered-project");
   renderedProjects.prepend(renderedDiv);

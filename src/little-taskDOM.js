@@ -181,6 +181,7 @@ export function renderLittleTask(project) {
     project.task.forEach(render);
   }
   rerender(project);
+  return { render };
 }
 
 function renderNotes(task, renderedNotes) {
