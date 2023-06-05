@@ -16,6 +16,8 @@ projectTitle.addEventListener("keypress", (e) => {
     e.preventDefault();
     projectObj.add();
     rerenderProjectArr();
+    rerenderInputField(projectsArr.at(-1));
+    renderLittleTask(projectsArr.at(-1));
     projectTitle.value = "";
   }
 });
