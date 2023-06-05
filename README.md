@@ -22,3 +22,6 @@ javaScript, HTML, CSS
 ## bugs to work on 
 
 - [ ] delete tasks completely when a project is deleted 
+
+## notes 
+* `npm run deploy` for publishing to gh-pages 
