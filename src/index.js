@@ -8,8 +8,8 @@ const projectTitle = document.querySelector(".project-title");
 
 rerenderProjectArr();
 // render the the project's task at the top when page first loads
-rerenderInputField(projectsArr.at(-1));
-renderLittleTask(projectsArr.at(-1));
+
+
 
 projectTitle.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
@@ -19,5 +19,7 @@ projectTitle.addEventListener("keypress", (e) => {
     rerenderInputField(projectsArr.at(-1));
     renderLittleTask(projectsArr.at(-1));
     projectTitle.value = "";
+    
   }
+ 
 });
